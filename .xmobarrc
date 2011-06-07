@@ -1,0 +1,18 @@
+Config { font = "-*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = Top
+       , commands = [ Run MultiCpu ["-t","CPU: <total>% <autobar>","-L","3",
+                            "-H","50","--normal","green","--high","red","--low","lightblue"] 10 
+                    , Run CoreTemp ["-t","Temp: <core0>|<core1>|<core2>|<core3>C",
+                            "-L","40","-H","60","-l","lightblue","-n","gray90",
+                            "-h","red"] 50 
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Network "eth0" ["-t","<dev>: <rx>/<tx>"] 50
+                    , Run Date "%A %Y-%m-%d %l:%M" "date" 10
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ %multicpu%  *  %coretemp%  *  %memory%  *  %eth0%     <fc=#ee9a00>%date%</fc>"
+       }
