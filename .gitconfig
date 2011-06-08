@@ -1,0 +1,5 @@
+[user]
+	name = John Mastro
+	email = john.b.mastro@gmail.com
+[core]
+	editor = vim
