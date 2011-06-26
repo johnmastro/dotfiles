@@ -6,7 +6,7 @@ xsetroot -cursor_name left_ptr -solid black
 
 setxkbmap -option ctrl:swapcaps
 
-xscreensaver &
+xscreensaver -nosplash &
 
 ~/.dropbox-dist/dropboxd &
 
