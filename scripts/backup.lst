@@ -1,0 +1,13 @@
+# Include
++ /dev/console
++ /dev/initctl
++ /dev/null
++ /dev/zero
+
+# Exclude
+- /dev/*
+- /proc/*
+- /sys/*
+- /tmp/*
+- lost+found/
+- /mnt/backup/*
