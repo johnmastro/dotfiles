@@ -13,6 +13,7 @@ class Game(object):
         ]
         self.start = start
 
+
     def play(self):
         next = self.start
 
@@ -21,10 +22,12 @@ class Game(object):
             room = getattr(self, next)
             next = room()
 
+
     def death(self):
         print self.quips[randint(0, len(self.quips)-1)]
         print
         exit(1)
+
 
     def central_corridor(self):
         print txt.corridor
@@ -42,6 +45,7 @@ class Game(object):
         elif action == "tell a joke":
             print txt.corridor_joke
             return 'laser_weapon_armory'
+
 
     def laser_weapon_armory(self):
         print txt.armory
@@ -62,6 +66,7 @@ class Game(object):
             print txt.armory_wrong_code
             return 'death'
 
+
     def the_bridge(self):
         print txt.bridge
         action = raw_input("> ")
@@ -75,6 +80,7 @@ class Game(object):
         else:
             print "DOES NOT COMPUTE"
             return 'the_bridge'
+
 
     def escape_pod(self):
         print txt.escape_pod
