@@ -4,6 +4,6 @@
 # article from the Arch Linux Wiki
 
 sudo sh -c "
-    rsync -av --delete-excluded --exclude-from=backup.lst / /mnt/backup/;
-    touch /mnt/backup/BACKUP
+    rsync -av --delete-excluded --exclude-from=backup.lst / /mnt/seagate/backup/;
+    touch /mnt/seagate/backup/BACKUP
 "

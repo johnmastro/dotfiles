@@ -6,8 +6,10 @@
 
 # Exclude
 - /dev/*
+- /mnt/*
 - /proc/*
 - /sys/*
 - /tmp/*
+- /home/jbm/video/*
 - lost+found/
-- /mnt/backup/*
+
