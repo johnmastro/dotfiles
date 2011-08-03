@@ -2,7 +2,12 @@
 "------------------------------------------------------------------------------
 
 " basics ----------------------------------------------------------------------
-set runtimepath=~/dotfiles/.vim,$VIMRUNTIME
+if has('win32') || has('win64')
+    behave mswin
+    set runtimepath^=C:\\Local\\dev\\dotfiles\\.vim
+else
+    set runtimepath^=~/dotfiles/.vim
+end
 
 filetype off
 call pathogen#runtime_append_all_bundles()
@@ -48,17 +53,20 @@ set backup
 set undofile
 set history=1000
 set undoreload=10000
-set undodir=~/.vim/tmp/undo//
-set backupdir=~/.vim/tmp/backup//
-set directory=~/.vim/tmp/swap//
+set undodir^=~/.vim/tmp/undo//,C:\\Local\\vim\\tmp\\undo//
+set backupdir^=~/.vim/tmp/backup//,C:\\Local\\vim\\tmp\\backup//
+set directory^=~/.vim/tmp/swap//,C:\\Local\\vim\\tmp\\swap//
 
 " interface -------------------------------------------------------------------
 syntax on
 if has('gui_running')
+    if has('win32') || has('win64')
+        set guifont=Consolas:h9
+    else
+        set guifont=Inconsolata\ 11
+    end
     set columns=90 lines=50
     set guioptions-=T
-    " set guioptions-=m
-    set guifont=Inconsolata\ 11
     colorscheme mustang
 else
     set t_Co=256
@@ -77,3 +85,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+if has('win32') || has('win64')
+    map <leader>, :NERDTreeToggle C:\\Local<cr>
+else
+    map <leader>, :NERDTreeToggle ~<cr>
+end
