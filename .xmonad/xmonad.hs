@@ -59,7 +59,7 @@ myKeys =
     ]
 
 -- xmobar
-statusBarCmd     = "~/bin/xmobar"
+statusBarCmd     = "/usr/bin/xmobar"
 
 myLogHook h = dynamicLogWithPP $ xmobarPP
     { ppOutput   = hPutStrLn h 
