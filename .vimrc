@@ -2,12 +2,7 @@
 "------------------------------------------------------------------------------
 
 " basics ----------------------------------------------------------------------
-if has('win32') || has('win64')
-    behave mswin
-    set runtimepath^=C:\\Local\\dev\\dotfiles\\.vim
-else
-    set runtimepath^=~/dotfiles/.vim
-end
+set runtimepath^=~/dotfiles/.vim,C:\\Local\\dev\\dotfiles\\.vim
 
 filetype off
 call pathogen#runtime_append_all_bundles()
@@ -43,9 +38,9 @@ set expandtab
 set autoindent
 set smartindent
 set wrap
-set textwidth=85
+set textwidth=79
 set formatoptions=qrn1
-" set colorcolumn=80
+set colorcolumn=+1
 set backspace=indent,eol,start
 
 " undo, backup, and swap ------------------------------------------------------
@@ -60,14 +55,14 @@ set directory^=~/.vim/tmp/swap//,C:\\Local\\vim\\tmp\\swap//
 " interface -------------------------------------------------------------------
 syntax on
 if has('gui_running')
+    set columns=90 lines=50
+    set guioptions-=T
+    colorscheme mustang
     if has('win32') || has('win64')
         set guifont=Consolas:h9
     else
         set guifont=Inconsolata\ 11
-    end
-    set columns=90 lines=50
-    set guioptions-=T
-    colorscheme mustang
+    endif
 else
     set t_Co=256
     " let g:zenburn_high_Contrast=1
@@ -88,5 +83,5 @@ nnoremap <C-l> <C-w>l
 if has('win32') || has('win64')
     map <leader>, :NERDTreeToggle C:\\Local<cr>
 else
-    map <leader>, :NERDTreeToggle ~<cr>
-end
+    map <leader>, :NERDTreeToggle ~/<cr>
+endif
