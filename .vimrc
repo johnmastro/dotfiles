@@ -2,7 +2,7 @@
 "------------------------------------------------------------------------------
 
 " basics ----------------------------------------------------------------------
-set runtimepath=~/dotfiles/.vim,$VIMRUNTIME
+set runtimepath^=~/dotfiles/.vim,C:\\Local\\dev\\dotfiles\\.vim
 
 filetype off
 call pathogen#runtime_append_all_bundles()
@@ -38,9 +38,9 @@ set expandtab
 set autoindent
 set smartindent
 set wrap
-set textwidth=85
+set textwidth=79
 set formatoptions=qrn1
-" set colorcolumn=80
+set colorcolumn=+1
 set backspace=indent,eol,start
 
 " undo, backup, and swap ------------------------------------------------------
@@ -48,18 +48,21 @@ set backup
 set undofile
 set history=1000
 set undoreload=10000
-set undodir=~/.vim/tmp/undo//
-set backupdir=~/.vim/tmp/backup//
-set directory=~/.vim/tmp/swap//
+set undodir^=~/.vim/tmp/undo//,C:\\Local\\vim\\tmp\\undo//
+set backupdir^=~/.vim/tmp/backup//,C:\\Local\\vim\\tmp\\backup//
+set directory^=~/.vim/tmp/swap//,C:\\Local\\vim\\tmp\\swap//
 
 " interface -------------------------------------------------------------------
 syntax on
 if has('gui_running')
     set columns=90 lines=50
     set guioptions-=T
-    " set guioptions-=m
-    set guifont=Inconsolata\ 11
     colorscheme mustang
+    if has('win32') || has('win64')
+        set guifont=Consolas:h9
+    else
+        set guifont=Inconsolata\ 11
+    endif
 else
     set t_Co=256
     " let g:zenburn_high_Contrast=1
@@ -77,3 +80,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+if has('win32') || has('win64')
+    map <leader>, :NERDTreeToggle C:\\Local<cr>
+else
+    map <leader>, :NERDTreeToggle ~/<cr>
+endif
