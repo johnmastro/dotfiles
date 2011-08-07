@@ -56,10 +56,12 @@ set backup
 
 " interface -------------------------------------------------------------------
 syntax on
+set background=dark
 if has('gui_running')
+
     set columns=90 lines=50
     set guioptions-=T
-    colorscheme mustang
+    colorscheme solarized
 
     if has('win32') || has('win64')
         set guifont=Consolas:h9
@@ -95,6 +97,8 @@ endif
 
 let NERDTreeIgnore=['\~$', '.*\.pyc$']
 
+" file / language settings
+autocmd FileType python compiler pylint
 let g:sql_type_default = 'sqlanywhere'
 nnoremap _my :SQLSetType mysql<CR>
 nnoremap _sa :SQLSetType sqlanywhere<CR>
