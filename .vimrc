@@ -22,6 +22,7 @@ set cursorline
 set ttyfast
 set ruler
 set relativenumber
+set laststatus=2
 set splitbelow
 set lazyredraw
 set incsearch
@@ -44,13 +45,14 @@ set colorcolumn=+1
 set backspace=indent,eol,start
 
 " undo, backup, and swap ------------------------------------------------------
-set backup
-set undofile
 set history=1000
+set undofile
 set undoreload=10000
+" set backupskip^=/tmp/*,/private/tmp/*" " for crontab files
 set undodir^=~/.vim/tmp/undo//,C:\\Local\\vim\\tmp\\undo//
 set backupdir^=~/.vim/tmp/backup//,C:\\Local\\vim\\tmp\\backup//
 set directory^=~/.vim/tmp/swap//,C:\\Local\\vim\\tmp\\swap//
+set backup
 
 " interface -------------------------------------------------------------------
 syntax on
@@ -58,11 +60,15 @@ if has('gui_running')
     set columns=90 lines=50
     set guioptions-=T
     colorscheme mustang
+
     if has('win32') || has('win64')
         set guifont=Consolas:h9
+    elseif has('gui_macvim')
+        set guifont=menlo:h9
     else
         set guifont=Inconsolata\ 11
     endif
+
 else
     set t_Co=256
     " let g:zenburn_high_Contrast=1
@@ -80,8 +86,23 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
 if has('win32') || has('win64')
-    map <leader>, :NERDTreeToggle C:\\Local<cr>
+    map <leader>, :NERDTreeToggle C:\\Local<CR>
 else
-    map <leader>, :NERDTreeToggle ~/<cr>
+    map <leader>, :NERDTreeToggle ~/<CR>
 endif
+
+let NERDTreeIgnore=['\~$', '.*\.pyc$']
+
+let g:sql_type_default = 'sqlanywhere'
+nnoremap _my :SQLSetType mysql<CR>
+nnoremap _sa :SQLSetType sqlanywhere<CR>
+nnoremap _n :syntax off<CR> :set cc=<CR>
+
+" status line -----------------------------------------------------------------
+set statusline=%F%m%r%h%w
+set statusline+=\ %#warningmsg#
+set statusline+=%*
+set statusline+=%=(%{&ff}/%Y)
+set statusline+=\ (line\ %l\/%L,\ col\ %c)
