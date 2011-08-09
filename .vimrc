@@ -99,6 +99,8 @@ let NERDTreeIgnore=['\~$', '.*\.pyc$']
 
 " file / language settings
 autocmd FileType python compiler pylint
+let g:pylint_onwrite = 0
+
 let g:sql_type_default = 'sqlanywhere'
 nnoremap _my :SQLSetType mysql<CR>
 nnoremap _sa :SQLSetType sqlanywhere<CR>
