@@ -3,6 +3,7 @@
 
 alias ..='cd ..'
 alias ...='cd ../..'
+alias e='vim'
 alias ll='ls -lh'
 alias la='ls -A'
 alias l='ls -CF'
