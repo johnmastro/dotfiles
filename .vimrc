@@ -57,11 +57,13 @@ set backup
 " interface -------------------------------------------------------------------
 syntax on
 set background=dark
+colorscheme solarized
+
 if has('gui_running')
 
     set columns=90 lines=50
     set guioptions-=T
-    colorscheme solarized
+    " colorscheme solarized
 
     if has('win32') || has('win64')
         set guifont=Consolas:h9
@@ -72,10 +74,10 @@ if has('gui_running')
     endif
 
 else
-    set t_Co=256
+    " set t_Co=256
     " let g:zenburn_high_Contrast=1
     " colorscheme zenburn
-    colorscheme wombat256
+    " colorscheme wombat256
 endif
 
 " key remapping ---------------------------------------------------------------
