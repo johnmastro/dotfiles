@@ -1,7 +1,7 @@
 " ~/.vimrc
-"------------------------------------------------------------------------------
 
-" basics ----------------------------------------------------------------------
+
+" Basics ----------------------------------------------------------------------
 set runtimepath^=~/dotfiles/.vim,C:\\Local\\dotfiles\\.vim
 
 filetype off
@@ -9,8 +9,10 @@ call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 
 set nocompatible
-set modelines=0
 set encoding=utf-8
+setglobal fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,latin1
+set modelines=0
 set scrolloff=3
 set showmode
 set showcmd
@@ -21,7 +23,6 @@ set visualbell
 set cursorline
 set ttyfast
 set ruler
-set relativenumber
 set laststatus=2
 set splitbelow
 set lazyredraw
@@ -31,7 +32,14 @@ set smartcase
 set showmatch
 set hlsearch
 
-" tabs, spacing, wrapping, etc ------------------------------------------------
+if v:version >= 703
+    set relativenumber
+else
+    set number
+endif
+
+
+" Tabs, spacing, wrapping, etc ------------------------------------------------
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -41,46 +49,51 @@ set smartindent
 set wrap
 set textwidth=79
 set formatoptions=qrn1
-set colorcolumn=+1
 set backspace=indent,eol,start
 
-" undo, backup, and swap ------------------------------------------------------
+if v:version >= 703
+    set colorcolumn=+1
+endif
+
+
+" Undo, backup, and swap ------------------------------------------------------
 set history=1000
-set undofile
-set undoreload=10000
-" set backupskip^=/tmp/*,/private/tmp/*" " for crontab files
-set undodir^=~/.vim/tmp/undo//,C:\\Local\\vim\\tmp\\undo//
-set backupdir^=~/.vim/tmp/backup//,C:\\Local\\vim\\tmp\\backup//
 set directory^=~/.vim/tmp/swap//,C:\\Local\\vim\\tmp\\swap//
+set backupdir^=~/.vim/tmp/backup//,C:\\Local\\vim\\tmp\\backup//
+set backupskip=/tmp/*,/private/tmp/* " For crontab files
 set backup
 
-" interface -------------------------------------------------------------------
+if v:version >= 703
+    set undodir^=~/.vim/tmp/undo//,C:\\Local\\vim\\tmp\\undo//
+    set undofile
+    set undolevels=1000
+    set undoreload=10000
+endif
+
+
+" Interface -------------------------------------------------------------------
 syntax on
 set background=dark
-colorscheme solarized
 
 if has('gui_running')
-
+    colorscheme solarized
     set columns=90 lines=50
     set guioptions-=T
-    " colorscheme solarized
-
-    if has('win32') || has('win64')
+    if has('gui_macvim')
+        set guifont=menlo:h11
+    elseif has('win32') || has('win64')
         set guifont=Consolas:h9
-    elseif has('gui_macvim')
-        set guifont=menlo:h9
     else
         set guifont=Inconsolata\ 11
     endif
-
 else
-    " set t_Co=256
-    " let g:zenburn_high_Contrast=1
-    " colorscheme zenburn
-    " colorscheme wombat256
+    let g:solarized_termcolors=256
+    colorscheme solarized
 endif
 
-" key remapping ---------------------------------------------------------------
+
+" Key remapping ---------------------------------------------------------------
+inoremap <TAB> <C-R>=TabCompletion()<CR>
 nnoremap j gj
 nnoremap k gk
 nnoremap ; :
@@ -99,7 +112,8 @@ endif
 
 let NERDTreeIgnore=['\~$', '.*\.pyc$']
 
-" file / language settings
+
+" File / language settings ----------------------------------------------------
 autocmd FileType python compiler pylint
 let g:pylint_onwrite = 0
 
@@ -108,9 +122,33 @@ nnoremap _my :SQLSetType mysql<CR>
 nnoremap _sa :SQLSetType sqlanywhere<CR>
 nnoremap _n :syntax off<CR> :set cc=<CR>
 
-" status line -----------------------------------------------------------------
-set statusline=%F%m%r%h%w
-set statusline+=\ %#warningmsg#
-set statusline+=%*
-set statusline+=%=(%{&ff}/%Y)
-set statusline+=\ (line\ %l\/%L,\ col\ %c)
+autocmd FileType html,htmldjango set filetype=htmljinja
+autocmd FileType htmljinja setlocal et sw=2 ts=2 sts=2
+
+
+" Status line -----------------------------------------------------------------
+set statusline=%f                             " Path.
+set statusline+=%m                            " Modified flag.
+set statusline+=%r                            " Readonly flag.
+set statusline+=%w                            " Preview window flag.
+set statusline+=\                             " Space.
+set statusline+=%=                            " Right align.
+set statusline+=(
+set statusline+=%{&ff}                        " Format (unix/DOS).
+set statusline+=/
+set statusline+=%{strlen(&fenc)?&fenc:&enc}   " Encoding (utf-8).
+set statusline+=/
+set statusline+=%{&ft}                        " Type (python).
+set statusline+=)
+set statusline+=\ (line\ %l\/%L,\ col\ %03c)  " Line & column info.
+
+
+" Custom function(s) ----------------------------------------------------------
+" Remap Tab to Ctrl-N (autocomplete) when used mid-word:
+function! TabCompletion()
+    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+        return "\<C-N>"
+    else
+        return "\<TAB>"
+    endif
+endfunction
