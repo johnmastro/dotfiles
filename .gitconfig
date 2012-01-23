@@ -2,7 +2,7 @@
 	name = John Mastro
 	email = john.b.mastro@gmail.com
 [core]
-	editor = mvim
+	editor = vim
 [color]
 	diff = auto
 	status = auto
