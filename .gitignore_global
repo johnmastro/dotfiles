@@ -1,5 +1,6 @@
 # Compiled code 
 ####################
+*.py[co]
 *.com
 *.class
 *.dll
@@ -18,10 +19,13 @@
 *.tar
 *.zip
 
-# OS generated files
-********************
-.DS_Store?
+# OS-generated files
+####################
+.DS_Store*
 ehthumbs.db
 Icon?
 Thumbs.db
 
+# Logs
+####################
+pip-log.txt
