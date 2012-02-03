@@ -19,6 +19,7 @@ set showcmd
 set hidden
 set wildmenu
 set wildmode=list:longest,full
+set wildignore+=.hg,.git,*.pyc,.DS_Store
 set visualbell
 set cursorline
 set ttyfast
@@ -50,6 +51,13 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 set backspace=indent,eol,start
+set list
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+augroup trailing
+    au!
+    au InsertEnter * :set listchars-=trail:⌴
+    au InsertLeave * :set listchars+=trail:⌴
+augroup END
 
 if v:version >= 703
     set colorcolumn=+1
@@ -152,3 +160,4 @@ function! TabCompletion()
         return "\<TAB>"
     endif
 endfunction
+
