@@ -52,7 +52,8 @@ set textwidth=79
 set formatoptions=qrn1
 set backspace=indent,eol,start
 set list
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+" set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+set listchars=tab:▸\ ,extends:❯,precedes:❮
 augroup trailing
     au!
     au InsertEnter * :set listchars-=trail:⌴
