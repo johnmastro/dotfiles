@@ -127,6 +127,7 @@ autocmd FileType python compiler pylint
 let g:pylint_onwrite = 0
 
 let g:sql_type_default = 'sqlanywhere'
+autocmd FileType sql setlocal cc=
 nnoremap _my :SQLSetType mysql<CR>
 nnoremap _sa :SQLSetType sqlanywhere<CR>
 nnoremap _n :syntax off<CR> :set cc=<CR>
