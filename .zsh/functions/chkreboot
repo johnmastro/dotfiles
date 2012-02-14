@@ -1,4 +1,4 @@
-if [[ "$(uname -v)" != *Ubuntu* ]]; then
+if [[ "$(uname -a)" != *Ubuntu* ]]; then
     echo "Unknown"
 elif [[ -f /var/run/reboot-required ]]; then
     echo "Yes: reboot required"
