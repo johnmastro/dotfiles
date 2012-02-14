@@ -13,6 +13,7 @@ if [[ "$OSTYPE" == linux* ]]; then
     alias grep='grep --color=auto'
     alias egrep='egrep --color=auto'
     alias fgrep='fgrep --color=auto'
+    alias apt='sudo aptitude'
 fi
 
 # ls
@@ -48,6 +49,10 @@ alias find='noglob find'
 # alias psql='nocorrect psql'
 # alias pip='nocorrect pip'
 # alias cpanm='nocorrect cpanm'
+
+# python stuff (inspired by oh-my-zsh's python plugin)
+alias pyfind='for py (**/*.py) echo $py'
+alias pyclean='zargs **/*.py[co] -- rm'
 
 # global aliases
 alias -g L='| less'
