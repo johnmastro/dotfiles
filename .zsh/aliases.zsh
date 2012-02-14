@@ -2,6 +2,7 @@
 alias e='vim'
 alias vi='vim'
 alias g='git'
+alias x='extract'
 alias _='sudo'
 
 # linux-specific aliases
