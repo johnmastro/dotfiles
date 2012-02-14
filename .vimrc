@@ -108,10 +108,13 @@ nnoremap k gk
 nnoremap ; :
 let mapleader=","
 map <leader>/ :noh<CR>
+
+" Window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap <leader>v :vnew<CR>
 
 if has('win32') || has('win64')
     map <leader>, :NERDTreeToggle C:\\Local<CR>
