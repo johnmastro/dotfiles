@@ -128,7 +128,7 @@ else
     map <leader>, :NERDTreeToggle ~/<CR>
 endif
 
-map <leader>a :Ack
+map <leader>a :Ack!
 
 
 
