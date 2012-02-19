@@ -21,6 +21,11 @@ set wildmenu
 set wildmode=list:longest,full
 set wildignore+=.hg,.git,*.pyc,.DS_Store
 set visualbell
+if v:version >= 703
+   set relativenumber
+else
+   set number
+endif
 set cursorline
 set ttyfast
 set ruler
@@ -32,12 +37,7 @@ set ignorecase
 set smartcase
 set showmatch
 set hlsearch
-
-if v:version >= 703
-    set relativenumber
-else
-    set number
-endif
+set gdefault
 
 
 " Tabs, spacing, wrapping, etc ------------------------------------------------
@@ -102,10 +102,14 @@ endif
 
 
 " Key remapping ---------------------------------------------------------------
-inoremap <TAB> <C-R>=TabCompletion()<CR>
+nnoremap ; :
+inoremap jj <ESC>
 nnoremap j gj
 nnoremap k gk
-nnoremap ; :
+nnoremap / /\v
+vnoremap / /\v
+inoremap <TAB> <C-R>=TabCompletion()<CR>
+
 let mapleader=","
 map <leader>/ :noh<CR>
 
@@ -116,13 +120,16 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <leader>v :vnew<CR>
 
+" Plugin settings
+let NERDTreeIgnore=['\~$', '.*\.pyc$']
 if has('win32') || has('win64')
     map <leader>, :NERDTreeToggle C:\\Local<CR>
 else
     map <leader>, :NERDTreeToggle ~/<CR>
 endif
 
-let NERDTreeIgnore=['\~$', '.*\.pyc$']
+map <leader>a :Ack
+
 
 
 " File / language settings ----------------------------------------------------
@@ -130,10 +137,10 @@ autocmd FileType python compiler pylint
 let g:pylint_onwrite = 0
 
 let g:sql_type_default = 'sqlanywhere'
-autocmd FileType sql setlocal cc=
-nnoremap _my :SQLSetType mysql<CR>
-nnoremap _sa :SQLSetType sqlanywhere<CR>
-nnoremap _n :syntax off<CR> :set cc=<CR>
+
+if v:version >= 703
+    autocmd FileType sql setlocal cc=
+endif
 
 autocmd FileType html,htmldjango set filetype=htmljinja
 autocmd FileType htmljinja setlocal et sw=2 ts=2 sts=2
