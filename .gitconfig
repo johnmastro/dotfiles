@@ -8,9 +8,3 @@
 	status = auto
 	branch = auto
 	ui = auto
-[alias]
-	co = checkout
-	st = status
-	ci = commit
-	br = branch
-	rb = rebase
