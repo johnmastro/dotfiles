@@ -49,20 +49,14 @@ set autoindent
 set smartindent
 set wrap
 set textwidth=79
+if v:version >= 703
+    set colorcolumn=+1
+endif
 set formatoptions=qrn1
 set backspace=indent,eol,start
 set list
 " set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set listchars=tab:▸\ ,extends:❯,precedes:❮
-augroup trailing
-    au!
-    au InsertEnter * :set listchars-=trail:⌴
-    au InsertLeave * :set listchars+=trail:⌴
-augroup END
-
-if v:version >= 703
-    set colorcolumn=+1
-endif
 
 
 " Undo, backup, and swap ------------------------------------------------------
@@ -71,7 +65,6 @@ set directory^=~/.vim/tmp/swap//,C:\\Local\\vim\\tmp\\swap//
 set backupdir^=~/.vim/tmp/backup//,C:\\Local\\vim\\tmp\\backup//
 set backupskip=/tmp/*,/private/tmp/* " For crontab files
 set backup
-
 if v:version >= 703
     set undodir^=~/.vim/tmp/undo//,C:\\Local\\vim\\tmp\\undo//
     set undofile
@@ -131,19 +124,28 @@ endif
 map <leader>a :Ack!
 
 
-
 " File / language settings ----------------------------------------------------
-autocmd FileType python compiler pylint
-let g:pylint_onwrite = 0
-
 let g:sql_type_default = 'sqlanywhere'
 
-if v:version >= 703
-    autocmd FileType sql setlocal cc=
-endif
+" autocomands
+augroup trailing
+    autocmd!
+    autocmd InsertEnter * :set listchars-=trail:⌴
+    autocmd InsertLeave * :set listchars+=trail:⌴
+augroup END
 
-autocmd FileType html,htmldjango set filetype=htmljinja
-autocmd FileType htmljinja setlocal et sw=2 ts=2 sts=2
+augroup ft_sql
+    autocmd!
+    if v:version >= 703
+        autocmd FileType sql setlocal cc=
+    endif
+augroup END
+
+augroup ft_html
+    autocmd!
+    autocmd FileType html,htmldjango set filetype=htmljinja
+    autocmd FileType htmljinja setlocal et sw=2 ts=2 sts=2
+augroup END
 
 
 " Status line -----------------------------------------------------------------
