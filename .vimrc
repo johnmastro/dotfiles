@@ -121,6 +121,8 @@ else
     map <leader>, :NERDTreeToggle ~/<CR>
 endif
 
+map <leader>s :SyntasticCheck<CR> :Errors<CR>
+
 map <leader>a :Ack!
 
 
