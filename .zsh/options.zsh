@@ -8,6 +8,8 @@ setopt multios
 setopt autocd
 setopt autopushd
 setopt pushdignoredups
+setopt pushdsilent
+setopt pushdtohome
 setopt correct
 # setopt correct_all
 setopt notify
