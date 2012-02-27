@@ -113,7 +113,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <leader>v :vnew<CR>
 
-" Plugin settings
+" Plugin settings / mappings
 let NERDTreeIgnore=['\~$', '.*\.pyc$']
 if has('win32') || has('win64')
     map <leader>, :NERDTreeToggle C:\\Local<CR>
@@ -124,6 +124,8 @@ endif
 map <leader>s :SyntasticCheck<CR> :Errors<CR>
 
 map <leader>a :Ack!
+
+let g:ctrlp_working_path_mode = 1
 
 
 " File / language settings ----------------------------------------------------
