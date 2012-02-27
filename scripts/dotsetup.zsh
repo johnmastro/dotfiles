@@ -2,10 +2,10 @@
 
 # dotsetup.zsh
 # ------------
-# create symbolic links into my dotfiles repo and folders for vim's tmp files.
+# creates symbolic links into my dotfiles repo and folders for vim's tmp files.
 
 if [[ ! -d ~/dotfiles ]]; then
-    echo "dotsetup.zsh: ~/dotfiles not found; exiting."
+    echo "~/dotfiles not found; exiting."
     exit 1
 fi
 
