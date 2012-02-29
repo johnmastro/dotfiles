@@ -1,7 +1,7 @@
 " ~/.vimrc
 
-
-" Basics ----------------------------------------------------------------------
+" basics
+" ======
 set runtimepath^=~/dotfiles/.vim,C:\\Local\\dotfiles\\.vim
 
 filetype off
@@ -40,7 +40,8 @@ set hlsearch
 set gdefault
 
 
-" Tabs, spacing, wrapping, etc ------------------------------------------------
+" tabs, spacing, wrapping, etc
+" ============================
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -55,11 +56,13 @@ endif
 set formatoptions=qrn1
 set backspace=indent,eol,start
 set list
+set listchars=tab:▸\ ,trail:·,extends:»,precedes:«
+" set listchars=tab:▸\ ,extends:»,precedes:«
 " set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
-set listchars=tab:▸\ ,extends:❯,precedes:❮
 
 
-" Undo, backup, and swap ------------------------------------------------------
+" undo, backup, and swap
+" ======================
 set history=1000
 set directory^=~/.vim/tmp/swap//,C:\\Local\\vim\\tmp\\swap//
 set backupdir^=~/.vim/tmp/backup//,C:\\Local\\vim\\tmp\\backup//
@@ -73,7 +76,8 @@ if v:version >= 703
 endif
 
 
-" Interface -------------------------------------------------------------------
+" interface
+" =========
 syntax on
 set background=dark
 
@@ -94,26 +98,36 @@ else
 endif
 
 
-" Key remapping ---------------------------------------------------------------
+" key (re-)mapping
+" ================
+let mapleader=","
 nnoremap ; :
 inoremap jj <ESC>
 nnoremap j gj
 nnoremap k gk
 nnoremap / /\v
 vnoremap / /\v
+nnoremap Y y$
 inoremap <TAB> <C-R>=TabCompletion()<CR>
+nmap <silent> // :nohlsearch<CR>
+imap <silent> <C-o> _
 
-let mapleader=","
-map <leader>/ :noh<CR>
-
-" Window navigation
+" window & buffer navigation
+" --------------------------
+nnoremap <leader>v :vnew<CR>
+nnoremap <leader>s :new<CR>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nnoremap <leader>v :vnew<CR>
+nnoremap <silent> <leader>z :bp<CR>
+nnoremap <silent> <leader>x :bn<CR>
 
-" Plugin settings / mappings
+
+" plugin settings / mappings
+" ==========================
+" nerdtree
+" --------
 let NERDTreeIgnore=['\~$', '.*\.pyc$']
 if has('win32') || has('win64')
     map <leader>, :NERDTreeToggle C:\\Local<CR>
@@ -121,21 +135,30 @@ else
     map <leader>, :NERDTreeToggle ~/<CR>
 endif
 
+" syntastic
+" ---------
 if has('win32') || has('win64')
     " disable syntastic on windows
     let g:loaded_syntastic_plugin = 1
+else
+    map <leader>c :SyntasticCheck<CR> :Errors<CR>
 endif
-map <leader>s :SyntasticCheck<CR> :Errors<CR>
 
+" ack
+" ---
 map <leader>a :Ack!
 
+" ctrlp
+" -----
 let g:ctrlp_working_path_mode = 1
 
 
-" File / language settings ----------------------------------------------------
+" file / language settings
+" ========================
 let g:sql_type_default = 'sqlanywhere'
 
 " autocomands
+" -----------
 augroup trailing
     autocmd!
     autocmd InsertEnter * :set listchars-=trail:⌴
@@ -156,25 +179,27 @@ augroup ft_html
 augroup END
 
 
-" Status line -----------------------------------------------------------------
-set statusline=%f                             " Path.
-set statusline+=%m                            " Modified flag.
-set statusline+=%r                            " Readonly flag.
-set statusline+=%w                            " Preview window flag.
-set statusline+=\                             " Space.
-set statusline+=%=                            " Right align.
+" status line
+" ===========
+set statusline=%f                             " path
+set statusline+=%m                            " modified flag
+set statusline+=%r                            " Readonly flag
+set statusline+=%w                            " preview window flag
+set statusline+=\                             " space
+set statusline+=%=                            " right align
 set statusline+=(
-set statusline+=%{&ff}                        " Format (unix/DOS).
+set statusline+=%{&ff}                        " format (unix/DOS)
 set statusline+=/
-set statusline+=%{strlen(&fenc)?&fenc:&enc}   " Encoding (utf-8).
+set statusline+=%{strlen(&fenc)?&fenc:&enc}   " encoding (utf-8)
 set statusline+=/
-set statusline+=%{&ft}                        " Type (python).
+set statusline+=%{&ft}                        " filetype
 set statusline+=)
-set statusline+=\ (line\ %l\/%L,\ col\ %03c)  " Line & column info.
+set statusline+=\ (line\ %l\/%L,\ col\ %03c)  " line & column info
 
 
-" Custom function(s) ----------------------------------------------------------
-" Remap Tab to Ctrl-N (autocomplete) when used mid-word:
+" custom function(s)
+" ==================
+" use tab for autocomplete when mid-word:
 function! TabCompletion()
     if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
         return "\<C-N>"
@@ -182,4 +207,3 @@ function! TabCompletion()
         return "\<TAB>"
     endif
 endfunction
-
