@@ -121,6 +121,10 @@ else
     map <leader>, :NERDTreeToggle ~/<CR>
 endif
 
+if has('win32') || has('win64')
+    " disable syntastic on windows
+    let g:loaded_syntastic_plugin = 1
+endif
 map <leader>s :SyntasticCheck<CR> :Errors<CR>
 
 map <leader>a :Ack!
