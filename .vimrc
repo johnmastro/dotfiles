@@ -1,7 +1,7 @@
 " ~/.vimrc
 
-" basics
-" ======
+" prelude
+" =======
 set runtimepath^=~/dotfiles/.vim,C:\\Local\\dotfiles\\.vim
 
 filetype off
@@ -9,6 +9,10 @@ call pathogen#infect()
 filetype plugin indent on
 
 set nocompatible
+
+
+" basic options
+" =============
 set encoding=utf-8
 setglobal fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,latin1
@@ -21,12 +25,12 @@ set wildmenu
 set wildmode=list:longest,full
 set wildignore+=.hg,.git,*.pyc,.DS_Store
 set visualbell
+set cursorline
 if v:version >= 703
    set relativenumber
 else
    set number
 endif
-set cursorline
 set ttyfast
 set ruler
 set laststatus=2
@@ -38,6 +42,12 @@ set smartcase
 set showmatch
 set hlsearch
 set gdefault
+
+augroup cursor_line
+    autocmd!
+    autocmd WinEnter * set cursorline
+    autocmd WinLeave * set nocursorline
+augroup END
 
 
 " tabs, spacing, wrapping, etc
@@ -56,9 +66,14 @@ endif
 set formatoptions=qrn1
 set backspace=indent,eol,start
 set list
-set listchars=tab:▸\ ,trail:·,extends:»,precedes:«
-" set listchars=tab:▸\ ,extends:»,precedes:«
+set listchars=tab:▸\ ,extends:»,precedes:«
 " set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+
+augroup trailing
+    autocmd!
+    autocmd InsertEnter * :set listchars-=trail:·
+    autocmd InsertLeave * :set listchars+=trail:·
+augroup END
 
 
 " undo, backup, and swap
@@ -105,11 +120,13 @@ nnoremap ; :
 inoremap jj <ESC>
 nnoremap j gj
 nnoremap k gk
+noremap H ^
+noremap L g_
 nnoremap / /\v
 vnoremap / /\v
 nnoremap Y y$
 inoremap <TAB> <C-R>=TabCompletion()<CR>
-nmap <silent> // :nohlsearch<CR>
+nmap <silent> <leader>/ :nohlsearch<CR>
 imap <silent> <C-o> _
 
 " window & buffer navigation
@@ -157,14 +174,6 @@ let g:ctrlp_working_path_mode = 1
 " ========================
 let g:sql_type_default = 'sqlanywhere'
 
-" autocomands
-" -----------
-augroup trailing
-    autocmd!
-    autocmd InsertEnter * :set listchars-=trail:⌴
-    autocmd InsertLeave * :set listchars+=trail:⌴
-augroup END
-
 augroup ft_sql
     autocmd!
     if v:version >= 703
@@ -199,7 +208,7 @@ set statusline+=\ (line\ %l\/%L,\ col\ %03c)  " line & column info
 
 " custom function(s)
 " ==================
-" use tab for autocomplete when mid-word:
+" use tab for autocompletion when mid-word:
 function! TabCompletion()
     if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
         return "\<C-N>"
