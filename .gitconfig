@@ -1,16 +1,48 @@
 [user]
-	name = John Mastro
-	email = john.b.mastro@gmail.com
+    name = John Mastro
+    email = john.b.mastro@gmail.com
+
 [core]
-	editor = vim
+    editor = vim
+
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	ui = auto
+    ui = true
+
+[color "branch"]
+    current = blue reverse
+    local = blue
+    remote = yellow
+
+[color "diff"]
+    meta = yellow
+    frag = blue
+    old = red
+    new = green
+
 [alias]
-	co = checkout
-	st = status
-	ci = commit
-	br = branch
-	rb = rebase
+    br = branch -v
+
+    co = checkout
+    nb = checkout -b
+
+    ci = commit
+    cm = commit -m
+    amend = commit --amend
+
+    d = diff
+    dc = diff --cached
+    dh = diff HEAD
+
+    l = log --decorate --graph --date=short
+    log = log --decorate --graph --date=short
+
+    mt = mergetool
+
+    rb = rebase
+    rc = rebase --continue
+    rs = rebase --skip
+
+    unstage = reset HEAD
+    uncommit = reset --soft HEAD^
+
+    st = status

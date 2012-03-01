@@ -29,3 +29,9 @@ Thumbs.db
 # Logs
 ####################
 pip-log.txt
+
+# Vim
+####################
+.*.sw[a-z]
+*.un~
+Session.vim
