@@ -8,6 +8,7 @@ PS1='%n@%m:%~/> '
 export EDITOR='vim'
 export PAGER='less'
 export PSQL_EDITOR='vim +"set syntax=sql" '
+export PYTHONSTARTUP=$HOME/.python/startup.py
 
 typeset -U path cdpath fpath manpath
 
@@ -16,11 +17,14 @@ if [[ "$OSTYPE" == darwin* ]]; then
     export CLICOLOR=1
 fi
 
-if [[ -d ${HOME}/bin ]]; then
-    path=(${HOME}/bin $path)
+if [[ -d $HOME/bin ]]; then
+    path=($HOME/bin $path)
 fi
 
-fpath=(${HOME}/dotfiles/.zsh/functions $fpath)
+if [[ -d $HOME/dotfiles/.zsh/functions ]]; then
+    fpath=($HOME/dotfiles/.zsh/functions $fpath)
+fi
+
 autoload -U zargs chkreboot extract
 
 if [[ -x /usr/bin/dircolors ]]; then
@@ -37,4 +41,4 @@ zmodload -i zsh/complist
 
 # Source additional config files
 ################################
-for config_file (${HOME}/dotfiles/.zsh/*.zsh) source $config_file
+for config_file ($HOME/dotfiles/.zsh/*.zsh) source $config_file

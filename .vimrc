@@ -60,9 +60,6 @@ set autoindent
 set smartindent
 set wrap
 set textwidth=79
-if v:version >= 703
-    set colorcolumn=+1
-endif
 set formatoptions=qrn1
 set backspace=indent,eol,start
 set list
@@ -172,20 +169,17 @@ let g:ctrlp_working_path_mode = 1
 
 " file / language settings
 " ========================
-let g:sql_type_default = 'sqlanywhere'
-
-augroup ft_sql
-    autocmd!
-    if v:version >= 703
-        autocmd FileType sql setlocal cc=
-    endif
-augroup END
+if v:version >= 703
+    autocmd FileType python,javascript,bash,zsh setlocal colorcolumn=+1
+endif
 
 augroup ft_html
     autocmd!
-    autocmd FileType html,htmldjango set filetype=htmljinja
+    autocmd BufNewFile,BufRead *.html setlocal filetype=htmljinja
     autocmd FileType htmljinja setlocal et sw=2 ts=2 sts=2
 augroup END
+
+let g:sql_type_default = 'sqlanywhere'
 
 
 " status line
