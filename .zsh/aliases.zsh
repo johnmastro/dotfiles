@@ -48,6 +48,7 @@ alias tbx='tar --bzip2 -xvf'
 
 # history
 alias history='fc -l 1'
+alias h='history'
 
 # exclude these from globbing/correction
 alias find='noglob find'
