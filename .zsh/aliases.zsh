@@ -14,6 +14,7 @@ if [[ "$OSTYPE" == linux* ]]; then
     alias egrep='egrep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias apt='sudo aptitude'
+    alias rpt='psql reporting'
 fi
 
 # ls
