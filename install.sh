@@ -27,6 +27,7 @@ mklink ~/dotfiles/.vimrc ~/.vimrc
 mklink ~/dotfiles/.gitconfig ~/.gitconfig
 mklink ~/dotfiles/.inputrc ~/.inputrc
 mklink ~/dotfiles/.pylintrc ~/.pylintrc
+mklink ~/dotfiles/.psqlrc ~/.psqlrc
 mklink ~/dotfiles/.tmux.conf ~/.tmux.conf
 
 mkdir -p ~/.vim/tmp/{backup,undo,swap}
