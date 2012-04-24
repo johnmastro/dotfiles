@@ -64,7 +64,6 @@ set formatoptions=qrn1
 set backspace=indent,eol,start
 set list
 set listchars=tab:▸\ ,extends:»,precedes:«
-" set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 
 augroup trailing
     autocmd!
@@ -105,6 +104,7 @@ if has('gui_running')
         set guifont=Inconsolata\ 11
     endif
 else
+    set t_Co=256
     let g:solarized_termcolors=256
     colorscheme solarized
 endif
@@ -179,7 +179,7 @@ augroup ft_html
     autocmd FileType htmljinja setlocal et sw=2 ts=2 sts=2
 augroup END
 
-let g:sql_type_default = 'sqlanywhere'
+let g:sql_type_default = 'postgresql'
 
 
 " status line
