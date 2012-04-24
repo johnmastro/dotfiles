@@ -1,6 +1,4 @@
 PS1='%n@%m:%~/> '
-#PS1='%n@%m:%~%# '
-#RPS1='%~/'
 
 
 # Enviornment variables
@@ -32,13 +30,79 @@ if [[ -x /usr/bin/dircolors ]]; then
 fi
 
 
-# Load the completion modules
+# Options
+################################
+setopt noclobber
+setopt shortloops
+setopt extendedglob
+setopt nomatch
+setopt badpattern
+setopt list_types
+setopt multios
+setopt autocd
+setopt autopushd
+setopt pushdignoredups
+setopt pushdsilent
+setopt pushdtohome
+setopt correct
+setopt notify
+setopt nobeep
+
+watch=all
+logcheck=60
+WATCHFMT="%n from %M has %a tty%l at %T %W"
+
+
+# Key (re-)binding
+################################
+bindkey -e
+
+bindkey "^[[A" history-beginning-search-backward  # up arrow
+bindkey "^[[B" history-beginning-search-forward   # down arrow
+
+if [[ "$OSTYPE" == darwin* ]]; then
+    bindkey "^[[H" beginning-of-line
+    bindkey "^[[F" end-of-line
+fi
+
+
+# History
+################################
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+setopt append_history
+setopt inc_append_history
+setopt extended_history
+setopt share_history
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt hist_expire_dups_first
+setopt hist_reduce_blanks
+setopt hist_ignore_space
+setopt hist_no_store
+setopt hist_verify
+setopt hist_allow_clobber
+
+
+# Completion
 ################################
 autoload -Uz compinit
 compinit
 zmodload -i zsh/complist
 
+unsetopt menu_complete
+unsetopt flow_control
+setopt auto_menu
+setopt complete_in_word
+setopt always_to_end
 
-# Source additional config files
+WORDCHARS=''
+
+source ~/dotfiles/.zsh/completion.zsh
+
+
+# Aliases
 ################################
-for config_file ($HOME/dotfiles/.zsh/*.zsh) source $config_file
+source ~/dotfiles/.zsh/aliases.zsh
