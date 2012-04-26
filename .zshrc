@@ -57,8 +57,8 @@ WATCHFMT="%n from %M has %a tty%l at %T %W"
 ################################
 bindkey -e
 
-bindkey "^[[A" history-beginning-search-backward  # up arrow
-bindkey "^[[B" history-beginning-search-forward   # down arrow
+# bindkey "^[[A" history-beginning-search-backward  # up arrow
+# bindkey "^[[B" history-beginning-search-forward   # down arrow
 
 if [[ "$OSTYPE" == darwin* ]]; then
     bindkey "^[[H" beginning-of-line
