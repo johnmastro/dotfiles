@@ -170,7 +170,7 @@ let g:ctrlp_working_path_mode = 1
 " file / language settings
 " ========================
 if v:version >= 703
-    autocmd FileType python,javascript,bash,zsh setlocal colorcolumn=+1
+    autocmd FileType python,javascript,bash,zsh,rst setlocal colorcolumn=80
 endif
 
 augroup ft_html
