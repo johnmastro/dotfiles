@@ -4,6 +4,7 @@ alias vi='vim'
 alias g='git'
 alias x='extract'
 alias _='sudo'
+alias ipy='ipython'
 
 # linux-specific aliases
 if [[ "$OSTYPE" == linux* ]]; then
