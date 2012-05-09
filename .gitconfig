@@ -5,19 +5,11 @@
 [core]
     editor = vim
 
+[push]
+    default = tracking
+
 [color]
     ui = true
-
-[color "branch"]
-    current = blue reverse
-    local = blue
-    remote = yellow
-
-[color "diff"]
-    meta = yellow
-    frag = blue
-    old = red
-    new = green
 
 [alias]
     br = branch -v
