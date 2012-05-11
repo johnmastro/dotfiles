@@ -63,13 +63,7 @@ set textwidth=79
 set formatoptions=qrn1
 set backspace=indent,eol,start
 set list
-set listchars=tab:▸\ ,extends:»,precedes:«
-
-augroup trailing
-    autocmd!
-    autocmd InsertEnter * :set listchars-=trail:·
-    autocmd InsertLeave * :set listchars+=trail:·
-augroup END
+set listchars=tab:▸\ ,extends:»,precedes:«,trail:·
 
 
 " undo, backup, and swap
@@ -119,11 +113,18 @@ nnoremap j gj
 nnoremap k gk
 noremap H ^
 noremap L g_
+nnoremap vv ^vg_
+nnoremap Y y$
 nnoremap / /\v
 vnoremap / /\v
-nnoremap Y y$
 inoremap <TAB> <C-R>=TabCompletion()<CR>
-nmap <silent> <leader>/ :nohlsearch<CR>
+
+nnoremap <silent> <leader>/ :nohlsearch<CR>
+nnoremap <silent> <leader>l :setlocal list!<CR>
+
+" remote trailing whitespace
+nnoremap <silent> <leader>w mz:%s/\s\+$//<CR>:let @/=''<CR>`z
+
 imap <silent> <C-o> _
 
 " window & buffer navigation
