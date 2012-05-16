@@ -125,6 +125,12 @@ nnoremap <silent> <leader>l :setlocal list!<CR>
 " remote trailing whitespace
 nnoremap <silent> <leader>w mz:%s/\s\+$//<CR>:let @/=''<CR>`z
 
+if has('win32') || has('win64')
+    nnoremap <silent> <leader>rc :e c:\Local\dotfiles\.vimrc<CR>
+else
+    nnoremap <silent> <leader>rc :e ~/.vimrc<CR>
+endif
+
 imap <silent> <C-o> _
 
 " window & buffer navigation
