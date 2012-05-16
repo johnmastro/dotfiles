@@ -30,4 +30,4 @@ mklink ~/dotfiles/.pylintrc ~/.pylintrc
 mklink ~/dotfiles/.psqlrc ~/.psqlrc
 mklink ~/dotfiles/.tmux.conf ~/.tmux.conf
 
-mkdir -p ~/.vim/tmp/{backup,undo,swap}
+mkdir -p ~/.tmp/vim/{backup,undo,swap}

@@ -69,12 +69,12 @@ set listchars=tab:▸\ ,extends:»,precedes:«,trail:·
 " undo, backup, and swap
 " ======================
 set history=1000
-set directory^=~/.vim/tmp/swap//,C:\\Local\\vim\\tmp\\swap//
-set backupdir^=~/.vim/tmp/backup//,C:\\Local\\vim\\tmp\\backup//
+set directory^=~/.tmp/vim/swap//,C:\\Local\\tmp\\vim\\swap//
+set backupdir^=~/.tmp/vim/backup//,C:\\Local\\tmp\\vim\\backup//
 set backupskip=/tmp/*,/private/tmp/* " For crontab files
 set backup
 if v:version >= 703
-    set undodir^=~/.vim/tmp/undo//,C:\\Local\\vim\\tmp\\undo//
+    set undodir^=~/.tmp/vim/undo//,C:\\Local\\tmp\\vim\\undo//
     set undofile
     set undolevels=1000
     set undoreload=10000
