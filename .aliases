@@ -51,28 +51,3 @@ alias tbx='tar --bzip2 -xvf'
 # history
 alias history='fc -l 1'
 alias h='history'
-
-# exclude these from globbing/correction
-alias find='noglob find'
-# alias cp='nocorrect cp'
-# alias mv='nocorrect mv'
-# alias mkdir='nocorrect mkdir'
-# alias man='nocorrect man'
-# alias psql='nocorrect psql'
-# alias pip='nocorrect pip'
-# alias cpanm='nocorrect cpanm'
-
-# python stuff (inspired by oh-my-zsh's python plugin)
-alias pyfind='for py (**/*.py) echo $py'
-alias pyclean='zargs **/*.py[co] -- rm'
-
-# global aliases
-alias -g L='| less'
-alias -g G='| grep'
-alias -g E='| egrep'
-alias -g V='| col -b | vim -R -'
-
-# suffix (extension) aliases
-alias -s txt='vim'
-alias -s ini='vim'
-alias -s conf='vim'

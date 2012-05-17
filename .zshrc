@@ -57,9 +57,6 @@ WATCHFMT="%n from %M has %a tty%l at %T %W"
 ################################
 bindkey -e
 
-# bindkey "^[[A" history-beginning-search-backward  # up arrow
-# bindkey "^[[B" history-beginning-search-forward   # down arrow
-
 if [[ "$OSTYPE" == darwin* ]]; then
     bindkey "^[[H" beginning-of-line
     bindkey "^[[F" end-of-line
@@ -86,6 +83,27 @@ setopt hist_verify
 setopt hist_allow_clobber
 
 
+# Aliases
+################################
+# general aliases:
+source ~/dotfiles/.aliases
+
+# zsh-specific aliases:
+alias pyfind='for py (**/*.py) echo $py'
+alias pyclean='zargs **/*.py[co] -- rm'
+
+# global aliases
+alias -g L='| less'
+alias -g G='| grep'
+alias -g E='| egrep'
+alias -g V='| col -b | vim -R -'
+
+# suffix (extension) aliases
+alias -s txt='vim'
+alias -s ini='vim'
+alias -s conf='vim'
+
+
 # Completion
 ################################
 autoload -Uz compinit
@@ -100,9 +118,19 @@ setopt always_to_end
 
 WORDCHARS=''
 
-source ~/dotfiles/.zsh/completion.zsh
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
+if [[ "$OSTYPE" == linux* ]]; then
+    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+else
+    zstyle ':completion:*' list-colors ''
+fi
 
-# Aliases
-################################
-source ~/dotfiles/.zsh/aliases.zsh
+zstyle ':completion:*:*:*:*:*' menu select
+zstyle ':completion:*:kill:*' force-list always
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
+
+# disable named-directories autocompletion
+zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
+cdpath=(.)
