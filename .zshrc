@@ -19,11 +19,7 @@ if [[ -d $HOME/bin ]]; then
     path=($HOME/bin $path)
 fi
 
-if [[ -d $HOME/dotfiles/.zsh/functions ]]; then
-    fpath=($HOME/dotfiles/.zsh/functions $fpath)
-fi
-
-autoload -U zargs chkreboot extract
+autoload -U zargs
 
 if [[ -x /usr/bin/dircolors ]]; then
     eval `dircolors`
