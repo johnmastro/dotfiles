@@ -71,7 +71,7 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
+# enable color support
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
@@ -80,13 +80,15 @@ fi
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# source command aliases
+# aliases used in both bash in zsh
 if [ -f ~/.aliases ]; then
-    # aliases used in both bash in zsh
     . ~/.aliases
-elif [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
 fi
+
+# bash-specific aliases
+alias cd='pushd'
+alias ..='cd ..'
+alias ...='cd ../..'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
