@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+###############################################################################
+# extract.sh
+#
+# alias x='extract' for extra laziness
+###############################################################################
+
+if [ "$#" == "0" ]; then
+  echo 'usage: extract [filenames]'
+  exit
+fi
+
+for fn in "$@"
+do
+    if [ -f "$fn" ]; then
+      case "$fn" in
+        *.tar.gz|*.tgz)    tar xvzf "$fn" ;;
+        *.tar.bz2|*.tbz)   tar xvjf "$fn" ;;
+        *.tar.xz|*.txz)    tar --xz -xvf "$fn" ;;
+        *.tar.zma|*.tlz)   tar --lzma -xvf "$fn" ;;
+        *.tar)             tar xvf "$fn" ;;
+        *.gz)              gunzip "$fn" ;;
+        *.bz2)             bunzip2 "$fn" ;;
+        *.xz)              unxz "$fn" ;;
+        *.lzma)            unlzma "$fn" ;;
+        *.Z)               uncompress "$fn" ;;
+        *.zip|*.egg|*.jar) unzip "$fn" ;;
+        *.rar)             unrar e "$fn" ;;
+        *.7z)              7za x "$fn" ;;
+        *) echo "extract: unrecognized archive format ('$fn')" ;;
+      esac
+    else
+        echo "extract: not a valid file ('$fn')"
+    fi
+done
