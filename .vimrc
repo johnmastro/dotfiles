@@ -2,7 +2,7 @@
 
 " prelude
 " =======
-set runtimepath^=~/dotfiles/.vim,C:\\Local\\dotfiles\\.vim
+set runtimepath^=~/.vim,C:\\Local\\dotfiles\\.vim
 
 filetype off
 call pathogen#infect()

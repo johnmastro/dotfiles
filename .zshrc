@@ -82,7 +82,7 @@ setopt hist_allow_clobber
 # Aliases
 ################################
 # general aliases:
-source ~/dotfiles/.aliases
+source ~/.aliases
 
 # zsh-specific aliases:
 alias pyfind='for py (**/*.py) echo $py'
