@@ -6,7 +6,7 @@ PS1='%n@%m:%~/> '
 export EDITOR='vim'
 export PAGER='less'
 export PSQL_EDITOR='vim +"set syntax=sql" '
-export PYTHONSTARTUP=$HOME/.python/startup.py
+export PYTHONSTARTUP="$HOME/.python/startup.py"
 
 typeset -U path cdpath fpath manpath
 

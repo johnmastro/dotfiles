@@ -9,17 +9,16 @@
 [ -z "$PS1" ] && return
 
 # enviornment variables
-export EDITOR="$(which vim)"
-export PAGER="$(which less)"
+export EDITOR='vim'
+export PAGER='less'
 export PSQL_EDITOR='vim +"set syntax=sql" '
+export PYTHONSTARTUP="$HOME/.python/startup.py"
 
-# options only relevent for os x:
+# options specific to os x
 if [[ "$OSTYPE" =~ "darwin" ]]; then
-    # paths used by `brew`
     [ -d /usr/local/bin ] && PATH="/usr/local/bin:$PATH"
     [ -d /usr/local/share/python ] && PATH="/usr/local/share/python:$PATH"
 
-    # enable color ls
     export CLICOLOR=1
 
     type -P brew &>/dev/null
