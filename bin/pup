@@ -5,15 +5,25 @@
 pup: check PyPI for updates, since pip doesn't.
 """
 
+from __future__ import print_function
+
 import sys
 import pip
-import xmlrpclib
-from cStringIO import StringIO
+
+try:
+    import xmlrpclib
+    from cStringIO import StringIO
+    from itertools import ifilter as filter  # pylint: disable=W0622
+except ImportError:
+    from io import StringIO
+    import xmlrpc.client as xmlrpclib  # pylint: disable=F0401
+
 from distutils.version import StrictVersion, LooseVersion
 
 
 def pip_freeze():
-    """Run `pip freeze` and return a list of [package, version] lists."""
+    """Run `pip freeze` and return a generator yielding [package, version]
+    lists."""
     sys.stdout = _stdout = StringIO()
     sys.stderr = _stderr = StringIO()
 
@@ -24,7 +34,7 @@ def pip_freeze():
 
     return filter(
         lambda p: len(p) >= 2,
-        [p.split('==') for p in _stdout.getvalue().split('\n')]
+        (p.split('==') for p in _stdout.getvalue().split('\n'))
     )
 
 
@@ -47,36 +57,34 @@ def is_newer(ver1, ver2):
 
 
 def find_updates(packages):
-    """Return a list of (package_name, new_version, old_version) tuples."""
-    updates = []
-
+    """Return a generator yielding (package, new_ver, old_ver) tuples."""
     for pkg, local_ver in packages:
         remote_ver = remote_version(pkg)
         if remote_ver and is_newer(remote_ver, local_ver):
-            updates.append((pkg, remote_ver, local_ver))
-
-    return updates
+            yield (pkg, remote_ver, local_ver)
 
 
 def main():
     """Identify installed packages with newer versions available and print the
     result.
     """
-    print 'pup: checking PyPI for updates.'
     packages = pip_freeze()
     updates = find_updates(packages)
-
     columns = '\t{:20}    {:15}    {:15}'
 
-    if updates:
-        print 'packages with newer versions available:\n'
-        print columns.format('package', 'available', 'current')
-        print columns.format('-' * 20, '-' * 15, '-' * 15)
-        for pkg, new, old in updates:
-            print columns.format(pkg[:20], new[:15], old[:15])
-        print
-    else:
-        print 'no updates available.'
+    print('pup: checking PyPI for updates.\n')
+
+    cnt = 0
+    for pkg, new, old in updates:
+        cnt += 1
+        if cnt == 1:
+            print('Packages with newer versions available:\n')
+            print(columns.format('Package', 'Available', 'Current'))
+            print(columns.format('-' * 20, '-' * 15, '-' * 15))
+
+        print(columns.format(pkg[:20], new[:15], old[:15]))
+
+    print('\nFound {0} update(s).'.format(cnt))
 
 
 if __name__ == '__main__':
