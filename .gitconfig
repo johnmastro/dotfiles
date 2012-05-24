@@ -37,4 +37,4 @@
     unstage = reset HEAD
     uncommit = reset --soft HEAD^
 
-    st = status
+    st = status -sb
