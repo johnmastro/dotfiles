@@ -1,3 +1,9 @@
+###############################################################################
+# ~/.zshrc: executed by zsh for interactive shells.
+#
+# executed by zsh for interactive shells.
+###############################################################################
+
 PS1='%n@%m:%~/> '
 
 
@@ -22,7 +28,11 @@ fi
 autoload -U zargs
 
 if [[ -x /usr/bin/dircolors ]]; then
-    eval `dircolors`
+    if [[ -f $HOME/.dircolors ]]; then
+        eval `dircolors -b $HOME/.dircolors`
+    else
+        eval `dircolors -b`
+    fi
 fi
 
 
@@ -81,23 +91,23 @@ setopt hist_allow_clobber
 
 # Aliases
 ################################
-# general aliases:
 source ~/.aliases
 
-# zsh-specific aliases:
 alias pyfind='for py (**/*.py) echo $py'
 alias pyclean='zargs **/*.py[co] -- rm'
 
 # global aliases
 alias -g L='| less'
 alias -g G='| grep'
-alias -g E='| egrep'
+alias -g E='| grep -E'
 alias -g V='| col -b | vim -R -'
 
 # suffix (extension) aliases
 alias -s txt='vim'
 alias -s ini='vim'
 alias -s conf='vim'
+alias -s rst='vim'
+alias -s md='vim'
 
 
 # Completion
