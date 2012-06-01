@@ -177,7 +177,7 @@ let g:ctrlp_working_path_mode = 1
 " file / language settings
 " ========================
 if v:version >= 703
-    autocmd FileType python,javascript,bash,zsh,rst setlocal colorcolumn=80
+    autocmd FileType python,javascript,bash,zsh,rst setlocal colorcolumn=+1
 endif
 
 augroup ft_html
@@ -185,6 +185,8 @@ augroup ft_html
     autocmd BufNewFile,BufRead *.html setlocal filetype=htmljinja
     autocmd FileType htmljinja setlocal et sw=2 ts=2 sts=2
 augroup END
+
+autocmd Filetype gitcommit setlocal formatoptions+=t textwidth=72
 
 let g:sql_type_default = 'postgresql'
 
