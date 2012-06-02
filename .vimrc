@@ -26,7 +26,7 @@ set wildmode=list:longest,full
 set wildignore+=.hg,.git,*.pyc,.DS_Store
 set visualbell
 set cursorline
-if v:version >= 703
+if exists('&relativenumber')
    set relativenumber
 else
    set number
@@ -42,6 +42,7 @@ set smartcase
 set showmatch
 set hlsearch
 set gdefault
+set shortmess=atI
 
 augroup cursor_line
     autocmd!
@@ -73,7 +74,7 @@ set directory^=~/.tmp/vim/swap//,C:\\Local\\tmp\\vim\\swap//
 set backupdir^=~/.tmp/vim/backup//,C:\\Local\\tmp\\vim\\backup//
 set backupskip=/tmp/*,/private/tmp/* " For crontab files
 set backup
-if v:version >= 703
+if exists('&undodir')
     set undodir^=~/.tmp/vim/undo//,C:\\Local\\tmp\\vim\\undo//
     set undofile
     set undolevels=1000
@@ -176,7 +177,7 @@ let g:ctrlp_working_path_mode = 1
 
 " file / language settings
 " ========================
-if v:version >= 703
+if exists('&colorcolumn')
     autocmd FileType python,javascript,bash,zsh,rst setlocal colorcolumn=+1
 endif
 
