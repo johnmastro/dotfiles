@@ -5,6 +5,7 @@ alias g='git'
 alias x='extract'
 alias _='sudo'
 alias ipy='ipython'
+alias serve='python -m SimpleHTTPServer'
 
 # linux-specific aliases
 if [[ "$OSTYPE" =~ "linux" ]]; then
@@ -24,6 +25,7 @@ alias la='ls -AF'
 alias ll='ls -lhF'
 alias lt='ls -lhtF'
 alias ltr='ls -lhtrF'
+alias lsd='ls -l | grep "^d"'
 
 # file & directory operations
 alias ...='cd ../..'
@@ -51,3 +53,6 @@ alias tbx='tar --bzip2 -xvf'
 # history
 alias history='fc -l 1'
 alias h='history'
+
+# syntax highlighting `cat`
+alias c='pygmentize -O style=solarized256 -f console256 -g'
