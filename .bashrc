@@ -80,9 +80,8 @@ fi
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # aliases used in both bash in zsh
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
-fi
+[ -f ~/.aliases ] && source ~/.aliases
+[ -f ~/.private/.aliases ] && source ~/.private/.aliases
 
 # bash-specific aliases
 alias cd='pushd'

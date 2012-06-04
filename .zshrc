@@ -21,15 +21,15 @@ if [[ "$OSTYPE" == darwin* ]]; then
     export CLICOLOR=1
 fi
 
-if [[ -d $HOME/bin ]]; then
+if [[ -d ~/bin ]]; then
     path=($HOME/bin $path)
 fi
 
 autoload -U zargs
 
 if [[ -x /usr/bin/dircolors ]]; then
-    if [[ -f $HOME/.dircolors ]]; then
-        eval `dircolors -b $HOME/.dircolors`
+    if [[ -f ~/.dircolors ]]; then
+        eval `dircolors -b ~/.dircolors`
     else
         eval `dircolors -b`
     fi
@@ -71,7 +71,7 @@ fi
 
 # History
 ################################
-HISTFILE=~/.histfile
+HISTFILE=$HOME/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
@@ -91,7 +91,8 @@ setopt hist_allow_clobber
 
 # Aliases
 ################################
-source ~/.aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
+[[ -f ~/.private/.aliases ]] && source ~/.private/.aliases
 
 alias pyfind='for py (**/*.py) echo $py'
 alias pyclean='zargs **/*.py[co] -- rm'
