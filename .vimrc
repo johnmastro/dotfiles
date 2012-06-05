@@ -178,7 +178,8 @@ let g:ctrlp_working_path_mode = 1
 " file / language settings
 " ========================
 if exists('&colorcolumn')
-    autocmd FileType python,javascript,bash,zsh,rst setlocal colorcolumn=+1
+    autocmd FileType python,javascript,sh,zsh setlocal colorcolumn=+1
+    autocmd FileType rst,markdown setlocal colorcolumn=+1
 endif
 
 augroup ft_html
@@ -188,6 +189,12 @@ augroup ft_html
 augroup END
 
 autocmd Filetype gitcommit setlocal formatoptions+=t textwidth=72
+
+autocmd Filetype c,make setlocal noet sw=8 ts=8 sts=8
+
+autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+
+autocmd Filetype rst,markdown setlocal textwidth=83
 
 let g:sql_type_default = 'postgresql'
 
