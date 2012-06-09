@@ -56,3 +56,5 @@ alias h='history'
 
 # syntax highlighting `cat`
 alias c='pygmentize -O style=solarized256 -f console256 -g'
+
+# vim: ft=sh
