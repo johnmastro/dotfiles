@@ -16,7 +16,7 @@ set nocompatible
 set encoding=utf-8
 setglobal fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,latin1
-set modelines=0
+set modelines=1
 set scrolloff=3
 set showmode
 set showcmd
