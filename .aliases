@@ -5,6 +5,7 @@ alias g='git'
 alias x='extract'
 alias _='sudo'
 alias ipy='ipython'
+alias tmx='TERM=xterm-256color tmux'
 alias serve='python -m SimpleHTTPServer'
 
 # linux-specific aliases
