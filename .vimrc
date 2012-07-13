@@ -118,6 +118,7 @@ nnoremap vv ^vg_
 nnoremap Y y$
 nnoremap / /\v
 vnoremap / /\v
+inoremap # X<BS>#
 inoremap <TAB> <C-R>=TabCompletion()<CR>
 
 nnoremap <silent> <leader>/ :nohlsearch<CR>
@@ -185,8 +186,9 @@ endif
 augroup ft_html
     autocmd!
     autocmd BufNewFile,BufRead *.html setlocal filetype=htmljinja
-    autocmd FileType htmljinja setlocal et sw=2 ts=2 sts=2
 augroup END
+
+autocmd FileType rb,yaml,htmljinja setlocal et sw=2 ts=2 sts=2
 
 autocmd Filetype gitcommit setlocal formatoptions+=t textwidth=72
 
