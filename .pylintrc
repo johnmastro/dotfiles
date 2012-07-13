@@ -34,7 +34,7 @@ load-plugins=
 # can either give multiple identifier separated by comma (,) or put this option
 # multiple time (only on the command line, not in the configuration file where
 # it should appear only once).
-disable=I0011, W0511, W0142, C0321
+disable=I0011, W0511, W0142, C0321, W0622
 
 
 [REPORTS]
@@ -103,7 +103,7 @@ variable-rgx=[a-z_][a-z0-9_]{1,30}$
 inlinevar-rgx=[A-Za-z_][A-Za-z0-9_]*$
 
 # Good variable names which should always be accepted, separated by a comma
-good-names=f,i,j,k,n,x,ex,Run,_
+good-names=f,i,j,k,n,s,x,ex,Run,_
 
 # Bad variable names which should always be refused, separated by a comma
 bad-names=foo,bar,baz,toto,tutu,tata
