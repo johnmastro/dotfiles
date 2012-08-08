@@ -43,6 +43,7 @@ set showmatch
 set hlsearch
 set gdefault
 set shortmess=atI
+set completeopt=longest,menu,preview
 
 augroup cursor_line
     autocmd!
@@ -119,7 +120,7 @@ nnoremap Y y$
 nnoremap / /\v
 vnoremap / /\v
 inoremap # X<BS>#
-inoremap <TAB> <C-R>=TabCompletion()<CR>
+"inoremap <TAB> <C-R>=TabCompletion()<CR>
 
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 nnoremap <silent> <leader>l :setlocal list!<CR>
@@ -175,6 +176,20 @@ map <leader>a :Ack!
 " -----
 let g:ctrlp_working_path_mode = 1
 
+" supertab
+" --------
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextDefaultCompletionType = '<c-n>'
+let g:SuperTabLongestEnhanced = 1
+let g:SuperTabLongestHighlight = 1
+let g:SuperTabClosePreviewOnPopupClose = 1
+
+autocmd FileType *
+    \ if &omnifunc != '' |
+    \     call SuperTabChain(&omnifunc, '<c-n>') |
+    \     call SuperTabSetDefaultCompletionType('<c-x><c-u>') |
+    \ endif
+
 
 " file / language settings
 " ========================
@@ -222,10 +237,10 @@ set statusline+=\ (line\ %l\/%L,\ col\ %03c)  " line & column info
 " custom function(s)
 " ==================
 " use tab for autocompletion when mid-word:
-function! TabCompletion()
-    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-        return "\<C-N>"
-    else
-        return "\<TAB>"
-    endif
-endfunction
+"function! TabCompletion()
+"    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+"        return "\<C-N>"
+"    else
+"        return "\<TAB>"
+"    endif
+"endfunction
