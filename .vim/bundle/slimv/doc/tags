@@ -31,6 +31,7 @@ g:slimv_package	slimv.txt	/*g:slimv_package*
 g:slimv_preferred	slimv.txt	/*g:slimv_preferred*
 g:slimv_repl_max_len	slimv.txt	/*g:slimv_repl_max_len*
 g:slimv_repl_name	slimv.txt	/*g:slimv_repl_name*
+g:slimv_repl_simple_eval	slimv.txt	/*g:slimv_repl_simple_eval*
 g:slimv_repl_split	slimv.txt	/*g:slimv_repl_split*
 g:slimv_repl_syntax	slimv.txt	/*g:slimv_repl_syntax*
 g:slimv_repl_wrap	slimv.txt	/*g:slimv_repl_wrap*

@@ -110,7 +110,7 @@ endif
 " ================
 let mapleader=","
 nnoremap ; :
-inoremap jj <ESC>
+inoremap jj <esc>
 nnoremap j gj
 nnoremap k gk
 noremap H ^
@@ -119,33 +119,27 @@ nnoremap vv ^vg_
 nnoremap Y y$
 nnoremap / /\v
 vnoremap / /\v
-inoremap # X<BS>#
+inoremap # X<bs>#
 "inoremap <TAB> <C-R>=TabCompletion()<CR>
 
-nnoremap <silent> <leader>/ :nohlsearch<CR>
-nnoremap <silent> <leader>l :setlocal list!<CR>
+nnoremap <silent> <leader>/ :nohlsearch<cr>
+nnoremap <silent> <leader>l :setlocal list!<cr>
 
 " remote trailing whitespace
-nnoremap <silent> <leader>w mz:%s/\s\+$//<CR>:let @/=''<CR>`z
+nnoremap <silent> <leader>w mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
-if has('win32') || has('win64')
-    nnoremap <silent> <leader>rc :e c:\Local\dotfiles\.vimrc<CR>
-else
-    nnoremap <silent> <leader>rc :e ~/.vimrc<CR>
-endif
-
-imap <silent> <C-o> _
+imap <silent> <c-o> _
 
 " window & buffer navigation
 " --------------------------
-nnoremap <leader>v :vnew<CR>
-nnoremap <leader>s :new<CR>
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <silent> <leader>z :bp<CR>
-nnoremap <silent> <leader>x :bn<CR>
+nnoremap <leader>v :vnew<cr>
+nnoremap <leader>s :new<cr>
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <silent> <leader>z :bp<cr>
+nnoremap <silent> <leader>x :bn<cr>
 
 
 " plugin settings / mappings
@@ -154,9 +148,9 @@ nnoremap <silent> <leader>x :bn<CR>
 " --------
 let NERDTreeIgnore=['\~$', '.*\.pyc$']
 if has('win32') || has('win64')
-    map <leader>, :NERDTreeToggle C:\\Local<CR>
+    map <leader>, :NERDTreeToggle C:\\Local<cr>
 else
-    map <leader>, :NERDTreeToggle ~/<CR>
+    map <leader>, :NERDTreeToggle ~/<cr>
 endif
 
 " syntastic
@@ -165,7 +159,7 @@ if has('win32') || has('win64')
     " disable syntastic on windows
     let g:loaded_syntastic_plugin = 1
 else
-    map <leader>c :SyntasticCheck<CR> :Errors<CR>
+    map <leader>c :SyntasticCheck<cr> :Errors<cr>
 endif
 
 " ack
@@ -174,7 +168,9 @@ map <leader>a :Ack!
 
 " ctrlp
 " -----
-let g:ctrlp_working_path_mode = 1
+map <leader>f :CtrlP<cr>
+map <leader>b :CtrlPBuffer<cr>
+let g:ctrlp_working_path_mode = ''
 
 " supertab
 " --------
@@ -189,6 +185,12 @@ autocmd FileType *
     \     call SuperTabChain(&omnifunc, '<c-n>') |
     \     call SuperTabSetDefaultCompletionType('<c-x><c-u>') |
     \ endif
+
+" slimv / paredit
+" ---------------
+let g:slimv_leader = '\'
+let g:paredit_leader = '\'
+let g:paredit_electric_return = 0
 
 
 " file / language settings
