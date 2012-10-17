@@ -1,16 +1,13 @@
 ###############################################################################
 # ~/.zshrc: executed by zsh for interactive shells.
-#
-# executed by zsh for interactive shells.
 ###############################################################################
 
+# Enviornment variables --------------------------------------------------- {{{
+
 PS1='%n@%m:%~/> '
-
-
-# Enviornment variables
-################################
 export EDITOR='vim'
 export PAGER='less'
+export LESS='-iMRSx4 -FX'
 export PSQL_EDITOR='vim +"set syntax=sql" '
 export PYTHONSTARTUP="$HOME/.python/startup.py"
 
@@ -35,9 +32,9 @@ if [[ -x /usr/bin/dircolors ]]; then
     fi
 fi
 
+# }}}
+# Options ----------------------------------------------------------------- {{{
 
-# Options
-################################
 setopt noclobber
 setopt shortloops
 setopt extendedglob
@@ -58,9 +55,9 @@ watch=all
 logcheck=60
 WATCHFMT="%n from %M has %a tty%l at %T %W"
 
+# }}}
+# Key (re-)binding -------------------------------------------------------- {{{
 
-# Key (re-)binding
-################################
 bindkey -e
 
 if [[ "$OSTYPE" == darwin* ]]; then
@@ -68,9 +65,9 @@ if [[ "$OSTYPE" == darwin* ]]; then
     bindkey "^[[F" end-of-line
 fi
 
+# }}}
+# History ----------------------------------------------------------------- {{{
 
-# History
-################################
 HISTFILE=$HOME/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -88,9 +85,9 @@ setopt hist_no_store
 setopt hist_verify
 setopt hist_allow_clobber
 
+# }}}
+# Aliases ----------------------------------------------------------------- {{{
 
-# Aliases
-################################
 [[ -f ~/.aliases ]] && source ~/.aliases
 [[ -f ~/.private/.aliases ]] && source ~/.private/.aliases
 
@@ -110,9 +107,9 @@ alias -s conf='vim'
 alias -s rst='vim'
 alias -s md='vim'
 
+# }}}
+# Completion -------------------------------------------------------------- {{{
 
-# Completion
-################################
 autoload -Uz compinit
 compinit
 zmodload -i zsh/complist
@@ -141,3 +138,7 @@ zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm 
 # disable named-directories autocompletion
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 cdpath=(.)
+
+# }}}
+
+# vim: foldmethod=marker:foldlevel=0
