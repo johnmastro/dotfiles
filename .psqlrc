@@ -3,4 +3,5 @@
 \timing
 \set HISTSIZE 2000
 \set HISTCONTROL ignoredups
+\pset pager always
 \unset QUIET
