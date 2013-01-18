@@ -245,6 +245,8 @@ map <leader>a :Ack!<space>
 map <leader>f :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
 let g:ctrlp_working_path_mode = 'rc'
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_cache_dir = '~/.tmp/vim/ctrlp'
 
 " }}}
 " supertab {{{
