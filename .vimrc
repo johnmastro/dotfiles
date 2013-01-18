@@ -2,7 +2,7 @@
 
 " prelude ----------------------------------------------------------------- {{{
 
-set runtimepath^=~/.vim,C:\\Local\\dotfiles\\.vim
+set runtimepath^=~/.vim,~\dotfiles\.vim
 
 filetype off
 call pathogen#infect()
@@ -83,12 +83,12 @@ set listchars=tab:▸\ ,extends:»,precedes:«,trail:·
 " undo, backup, and swap -------------------------------------------------- {{{
 
 set history=1000
-set directory^=~/.tmp/vim/swap//,C:\\Local\\tmp\\vim\\swap//
-set backupdir^=~/.tmp/vim/backup//,C:\\Local\\tmp\\vim\\backup//
+set directory^=~/.tmp/vim/swap//,~\.tmp\vim\swap//
+set backupdir^=~/.tmp/vim/backup//,~\.tmp\vim\backup//
 set backupskip=/tmp/*,/private/tmp/* " For crontab files
 set backup
 if exists('&undodir')
-    set undodir^=~/.tmp/vim/undo//,C:\\Local\\tmp\\vim\\undo//
+    set undodir^=~/.tmp/vim/undo//,~\.tmp\vim\undo//
     set undofile
     set undolevels=1000
     set undoreload=10000
