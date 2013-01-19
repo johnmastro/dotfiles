@@ -61,6 +61,10 @@ WATCHFMT="%n from %M has %a tty%l at %T %W"
 
 bindkey -e
 
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
 if [[ "$OSTYPE" == darwin* ]]; then
     bindkey "^[[H" beginning-of-line
     bindkey "^[[F" end-of-line
