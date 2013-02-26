@@ -373,7 +373,7 @@ augroup END
 " }}}
 " sql {{{
 
-let g:sql_type_default = 'postgresql'
+let g:sql_type_default = '_pgsql'
 
 " }}}
 
