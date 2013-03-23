@@ -23,6 +23,11 @@ if [[ -d ~/bin ]]; then
     path=($HOME/bin $path)
 fi
 
+if [[ -d ~/.rbenv/bin ]]; then
+    path=($HOME/.rbenv/bin $path)
+    eval "$(rbenv init -)"
+fi
+
 autoload -U zargs
 
 if [[ -x /usr/bin/dircolors ]]; then
