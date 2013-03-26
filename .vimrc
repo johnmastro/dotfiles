@@ -227,12 +227,9 @@ endif
 " }}}
 " syntastic {{{
 
-if has('win32') || has('win64')
-    " disable syntastic on windows
-    let g:loaded_syntastic_plugin = 1
-else
-    map <leader>c :SyntasticCheck<cr> :Errors<cr>
-endif
+let g:syntastic_mode_map = { 'mode': 'passive',
+                           \ 'active_filetypes': [],
+                           \ 'passive_filetypes': [] }
 
 " }}}
 " ack {{{
