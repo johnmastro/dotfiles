@@ -376,6 +376,8 @@ set statusline+=%m                            " modified flag
 set statusline+=%r                            " readonly flag
 set statusline+=%w                            " preview window flag
 set statusline+=\                             " space
+set statusline+=%{fugitive#statusline()}      " git branch
+set statusline+=\                             " space
 set statusline+=%=                            " right align
 set statusline+=(
 set statusline+=%{&ff}                        " format (unix/DOS)
