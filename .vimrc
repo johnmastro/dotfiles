@@ -18,6 +18,7 @@ setglobal fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,latin1
 set modelines=1
 set scrolloff=3
+set sidescrolloff=5
 set showmode
 set showcmd
 set hidden
@@ -45,6 +46,7 @@ set shortmess=atI
 set completeopt=longest,menu,preview
 set foldlevelstart=99  " all folds open
 set cpo+=J  " stevelosh.com/blog/2012/10/why-i-two-space/ convinced me
+set tabpagemax=50
 
 " wildignore {{{
 
@@ -133,7 +135,6 @@ colorscheme solarized
 let mapleader=','
 let maplocalleader='\'
 nnoremap ; :
-inoremap jj <esc>
 
 " move by screen (as opposed to file) lines
 nnoremap j gj
@@ -145,6 +146,10 @@ noremap L g_
 
 " visually select the line, excluding indentation and newline
 nnoremap vv ^vg_
+
+" remember flags when repeating substitutions
+nnoremap & :&&<cr>
+xnoremap & :&&<cr>
 
 " yank from the cursor to the end of the line
 nnoremap Y y$
@@ -165,13 +170,8 @@ inoremap # X<bs>#
 " shell/emacs-style ctrl-a in command mode
 cnoremap <c-a> <home>
 
-" conditional tab completion
-"inoremap <TAB> <C-R>=TabCompletion()<CR>
-
 " system clipboard interaction
 noremap <leader>y "*y
-noremap <leader>p :set paste<cr>"*p<cr>:set nopaste<cr>
-noremap <leader>P :set paste<cr>"*P<cr>:set nopaste<cr>
 vnoremap <leader>y "*ygv
 
 " clear search highlighting
@@ -185,7 +185,6 @@ nnoremap <silent> <leader>w mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
 " toggle whether trailing whitespace is shown
 nnoremap <silent> <leader>T :call TrailingToggle()<cr>
-nnoremap <silent> <leader>N :call RelativeNumberingToggle()<cr>
 
 " window & buffer navigation {{{
 
@@ -195,8 +194,6 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
-nnoremap <silent> <leader>z :bp<cr>
-nnoremap <silent> <leader>x :bn<cr>
 
 " }}}
 " folding {{{
@@ -218,11 +215,7 @@ nnoremap zO zCzO
 let NERDTreeIgnore=['\~$', '.*\.pyc$']
 let NERDTreeMinimalUI = 1
 
-if has('win32') || has('win64')
-    map <leader>, :NERDTreeToggle C:\\Local<cr>
-else
-    map <leader>, :NERDTreeToggle ~/<cr>
-endif
+map <leader>, :NERDTreeToggle ~/<cr>
 
 " }}}
 " syntastic {{{
@@ -241,6 +234,7 @@ map <leader>a :Ack!<space>
 
 map <leader>f :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
+map <leader>r :CtrlPMRU<cr>
 let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_cache_dir = '~/.tmp/vim/ctrlp'
@@ -395,15 +389,6 @@ set statusline+=\ (line\ %l\/%L,\ col\ %03c)  " line & column info
 " }}}
 " custom function(s) ------------------------------------------------------ {{{
 
-" use tab for autocompletion when mid-word:
-"function! TabCompletion()
-"    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-"        return "\<C-N>"
-"    else
-"        return "\<TAB>"
-"    endif
-"endfunction
-
 function! TrailingToggle()
     if &list == 1
         if &listchars =~ 'trail:·'
@@ -413,18 +398,6 @@ function! TrailingToggle()
         endif
     else
         echom "TrailingToggle: option '&list' not set"
-    endif
-endfunction
-
-function! RelativeNumberingToggle()
-    if exists('&relativenumber')
-        if &relativenumber == 1
-            setlocal number
-        else
-            setlocal relativenumber
-        endif
-    else
-        echom "RelativeNumberingToggle: relative numbering not available"
     endif
 endfunction
 
