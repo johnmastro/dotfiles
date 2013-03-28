@@ -16,6 +16,7 @@ typeset -U path cdpath fpath manpath
 if [[ "$OSTYPE" == darwin* ]]; then
     path=(/usr/local/bin /usr/local/share/python $path)
     fpath=(/usr/local/share/zsh-completions $fpath)
+    fpath=(/usr/local/share/zsh/functions $fpath)
     export CLICOLOR=1
 fi
 
