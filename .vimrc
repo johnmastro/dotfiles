@@ -221,7 +221,7 @@ map <leader>, :NERDTreeToggle ~/<cr>
 " syntastic {{{
 
 let g:syntastic_mode_map = { 'mode': 'passive',
-                           \ 'active_filetypes': [],
+                           \ 'active_filetypes': ['c'],
                            \ 'passive_filetypes': [] }
 
 " }}}
