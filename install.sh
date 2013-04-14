@@ -18,7 +18,7 @@ mklink () {
 }
 
 mkdir -p $HOME/{code,src,bin}
-mkdir -p $HOME/.tmp/vim/{backup,undo,swap}
+mkdir -p $HOME/.tmp/vim/{backup,undo,swap,ctrlp}
 
 dotfiles=($repo/!(install.sh|bin|.git|.gitignore))
 
