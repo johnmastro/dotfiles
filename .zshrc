@@ -14,7 +14,7 @@ export PYTHONSTARTUP="$HOME/.python/startup.py"
 typeset -U path cdpath fpath manpath
 
 if [[ "$OSTYPE" == darwin* ]]; then
-    path=(/usr/local/bin $path)
+    path=(/usr/local/bin /usr/local/share/npm/bin $path)
     fpath=(/usr/local/share/zsh-completions $fpath)
     fpath=(/usr/local/share/zsh/functions $fpath)
     export CLICOLOR=1
