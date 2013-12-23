@@ -273,7 +273,7 @@ let g:paredit_electric_return = 0
 
 augroup color_column
     autocmd!
-    autocmd Filetype python,javascript,sh,zsh,vim,rst,markdown
+    autocmd Filetype clojure,lisp,python,javascript,sh,zsh,vim,rst,markdown
         \ if exists('&colorcolumn') |
         \     setlocal colorcolumn=+1 |
         \ endif
