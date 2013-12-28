@@ -167,9 +167,6 @@ vnoremap ? ?\v
 " don't outdent comments
 inoremap # X<bs>#
 
-" shell/emacs-style ctrl-a in command mode
-cnoremap <c-a> <home>
-
 " system clipboard interaction
 noremap <leader>y "*y
 vnoremap <leader>y "*ygv
