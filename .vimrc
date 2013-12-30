@@ -301,7 +301,12 @@ augroup ft_ruby
 augroup END
 
 " }}}
-" gitcommit {{{
+" git {{{
+
+augroup ft_gitconfig
+    autocmd!
+    autocmd Filetype gitconfig setlocal noexpandtab sts=0 ts=8 sw=8
+augroup END
 
 augroup ft_gitcommit
     autocmd!
