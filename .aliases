@@ -41,6 +41,7 @@ alias lsd='ls -l | grep "^d"'
 # }}}
 # File & directory operations --------------------------------------------- {{{
 
+alias ..='cd ..'
 alias ...='cd ../..'
 alias cp='cp -i'
 alias mv='mv -i'
