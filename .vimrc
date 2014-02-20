@@ -167,9 +167,6 @@ vnoremap ? ?\v
 " don't outdent comments
 inoremap # X<bs>#
 
-" shell/emacs-style ctrl-a in command mode
-cnoremap <c-a> <home>
-
 " system clipboard interaction
 noremap <leader>y "*y
 vnoremap <leader>y "*ygv
@@ -273,7 +270,7 @@ let g:paredit_electric_return = 0
 
 augroup color_column
     autocmd!
-    autocmd Filetype python,javascript,sh,zsh,vim,rst,markdown
+    autocmd Filetype clojure,lisp,python,javascript,sh,zsh,vim,rst,markdown
         \ if exists('&colorcolumn') |
         \     setlocal colorcolumn=+1 |
         \ endif
@@ -304,7 +301,12 @@ augroup ft_ruby
 augroup END
 
 " }}}
-" gitcommit {{{
+" git {{{
+
+augroup ft_gitconfig
+    autocmd!
+    autocmd Filetype gitconfig setlocal noexpandtab sts=0 ts=8 sw=8
+augroup END
 
 augroup ft_gitcommit
     autocmd!

@@ -1,46 +1,46 @@
 [user]
-    name = John Mastro
-    email = john.b.mastro@gmail.com
+	name = John Mastro
+	email = john.b.mastro@gmail.com
 
 [core]
-    editor = vim
+	editor = vim
 
 [push]
-    default = tracking
+	default = tracking
 
 [color]
-    ui = true
+	ui = true
 
 [alias]
-    br = branch -v
+	br = branch -v
 
-    co = checkout
-    nb = checkout -b
+	co = checkout
+	nb = checkout -b
 
-    ci = commit
-    cm = commit -m
-    amend = commit --amend
+	ci = commit
+	cm = commit -m
+	amend = commit --amend
 
-    d = diff
-    dc = diff --cached
-    dh = diff HEAD
+	d = diff
+	dc = diff --cached
+	dh = diff HEAD
 
-    l = log --decorate --graph --date=short
-    log = log --decorate --graph --date=short
+	l = log --decorate --graph --date=short
+	log = log --decorate --graph --date=short
 
-    mt = mergetool
+	mt = mergetool
 
-    rb = rebase
-    rc = rebase --continue
-    rs = rebase --skip
+	rb = rebase
+	rc = rebase --continue
+	rs = rebase --skip
 
-    unstage = reset HEAD
-    uncommit = reset --soft HEAD^
+	unstage = reset HEAD
+	uncommit = reset --soft HEAD^
 
-    st = status -sb
+	st = status -sb
 
 [url "git@github.com:"]
-    insteadOf = "gh:"
+	insteadOf = "gh:"
 
 [url "git://github.com/"]
-    insteadOf = "github:"
+	insteadOf = "github:"
