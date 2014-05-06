@@ -368,6 +368,11 @@ augroup END
 
 let g:sql_type_default = '_pgsql'
 
+augroup ft_sql
+    autocmd!
+    autocmd Filetype sql setlocal commentstring=--%s
+augroup END
+
 " }}}
 
 " }}}
