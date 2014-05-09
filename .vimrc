@@ -180,7 +180,7 @@ nnoremap <silent> <leader>/ :nohlsearch<cr>
 nnoremap <silent> <leader>w mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
 " toggle whether trailing whitespace is shown
-nnoremap <silent> <leader>T :call TrailingToggle()<cr>
+nnoremap <silent> <leader>T :call ToggleShowTrailing()<cr>
 
 " window & buffer navigation {{{
 
@@ -395,7 +395,7 @@ set statusline+=\ (line\ %l\/%L,\ col\ %03c)  " line & column info
 " }}}
 " custom function(s) ------------------------------------------------------ {{{
 
-function! TrailingToggle()
+function! ToggleShowTrailing()
     if &list == 1
         if &listchars =~ 'trail:·'
             setlocal listchars-=trail:·
@@ -403,7 +403,7 @@ function! TrailingToggle()
             setlocal listchars+=trail:·
         endif
     else
-        echom "TrailingToggle: option '&list' not set"
+        echom "Option '&list' not set"
     endif
 endfunction
 
