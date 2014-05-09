@@ -262,16 +262,6 @@ autocmd Filetype *
     \ endif
 
 " }}}
-" slimv / paredit {{{
-
-let g:slimv_leader = '\'
-"let g:slimv_repl_simple_eval = 0
-let g:slimv_repl_name = 'SLIMV.REPL'
-let g:slimv_repl_split = 4
-let g:paredit_leader = '\'
-let g:paredit_electric_return = 0
-
-" }}}
 
 " }}}
 " file / language settings ------------------------------------------------ {{{
