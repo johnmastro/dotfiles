@@ -169,7 +169,9 @@ inoremap # X<bs>#
 
 " system clipboard interaction
 noremap <leader>y "*y
+noremap <f2> :call YankWholeBuffer()<cr>
 vnoremap <leader>y "*ygv
+vnoremap <f2> "+y
 
 " clear search highlighting
 nnoremap <silent> <leader>/ :nohlsearch<cr>
@@ -416,6 +418,12 @@ endfunction
 function! SynStack()
     echo join(map(synstack(line('.'), col('.')),
         \ 'synIDattr(v:val, "name")'), " > ")
+endfunction
+
+function! YankWholeBuffer()
+    let saved = winsaveview()
+    execute "normal! gg\"+yG"
+    call winrestview(saved)
 endfunction
 
 " }}}
