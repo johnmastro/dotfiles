@@ -235,8 +235,16 @@ map <leader>f :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
 map <leader>r :CtrlPMRU<cr>
 let g:ctrlp_working_path_mode = 'rc'
-let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_show_hidden = 1
 let g:ctrlp_cache_dir = '~/.tmp/vim/ctrlp'
+
+if has('unix')
+    let g:ctrlp_user_command = [
+                \ '.git/',
+                \ 'git --git-dir=%s/.git ls-files -oc --exclude-standard'
+                \ ]
+endif
 
 " }}}
 " supertab {{{
