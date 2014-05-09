@@ -132,7 +132,7 @@ colorscheme solarized
 " }}}
 " key (re-)mapping -------------------------------------------------------- {{{
 
-let mapleader=','
+let mapleader=' '
 let maplocalleader='\'
 nnoremap ; :
 
@@ -197,9 +197,9 @@ nnoremap <c-l> <c-w>l
 " }}}
 " folding {{{
 
-" toggle folds with <space>
-nnoremap <space> za
-vnoremap <space> za
+" toggle folds
+nnoremap <tab> za
+vnoremap <tab> za
 
 " recursively open a folded region
 nnoremap zO zCzO
