@@ -176,9 +176,6 @@ vnoremap <f2> "+y
 " clear search highlighting
 nnoremap <silent> <leader>/ :nohlsearch<cr>
 
-" toggle whether whitespace characters are shown
-nnoremap <silent> <leader>l :setlocal list!<cr>
-
 " remove trailing whitespace
 nnoremap <silent> <leader>w mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
