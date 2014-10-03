@@ -4,3 +4,7 @@ set match-hidden-files off
 set completion-query-items 100
 set visible-stats on
 set skip-completed-text on
+set convert-meta on
+
+Meta-p: previous-history
+Meta-n: next-history
