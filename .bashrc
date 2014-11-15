@@ -14,6 +14,21 @@ export PAGER='less'
 export PSQL_EDITOR='vim +"set syntax=sql" '
 export PYTHONSTARTUP="$HOME/.python/startup.py"
 
+export GPG_TTY=$(tty)
+
+if command -v gpg-agent &>/dev/null; then
+    envfile="$HOME/.gnupg/gpg-agent.env"
+    if [[ -e "$envfile" ]]; then
+        agentpid=$(grep GPG_AGENT_INFO "$envfile" | cut -d: -f 2)
+        if kill -0 "$agentpid" 2>/dev/null; then
+            eval "$(cat "$envfile")"
+        fi
+    else
+        eval "$(gpg-agent --daemon --write-env-file "$envfile")"
+    fi
+    export GPG_AGENT_INFO
+fi
+
 # options specific to os x
 if [[ "$OSTYPE" =~ "darwin" ]]; then
     [ -d /usr/local/bin ] && PATH="/usr/local/bin:$PATH"
