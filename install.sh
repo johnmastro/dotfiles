@@ -17,7 +17,7 @@ mklink () {
     ln -s "$src" "$dst"
 }
 
-mkdir -p $HOME/{code,src,bin}
+mkdir -p $HOME/{code,src,bin,.maildir/fastmail}
 
 dotfiles=($repo/!(install.sh|bin|.git|.gitignore))
 

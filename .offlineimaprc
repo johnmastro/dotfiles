@@ -1,0 +1,37 @@
+# Configuration for `offlineimap` (see also `~/.offlineimap.py`)   -*- conf -*-
+
+[general]
+ui = ttyui
+accounts = FastMail
+pythonfile = ~/.offlineimap.py
+fsync = false
+
+[Account FastMail]
+localrepository = FastMail-Local
+remoterepository = FastMail-Remote
+status_backend = sqlite
+
+[Repository FastMail-Local]
+type = Maildir
+localfolders = ~/.maildir/fastmail
+nametrans = lambda folder: {'inbox'  : 'INBOX',
+                            'archive': 'INBOX.Archive',
+                            'drafts' : 'INBOX.Drafts',
+                            'sent'   : 'INBOX.Sent Items'
+                            }.get(folder, folder)
+
+[Repository FastMail-Remote]
+type = IMAP
+remotehost = mail.messagingengine.com
+remoteuser = jbm@fastmail.fm
+remotepasseval = get_authinfo_password("jbm@fastmail.fm", "mail.messagingengine.com", 465)
+ssl = yes
+expunge = no
+nametrans = lambda folder: {'INBOX'           : 'inbox',
+                            'INBOX.Archive'   : 'archive',
+                            'INBOX.Drafts'    : 'drafts',
+                            'INBOX.Sent Items': 'sent'
+                            }.get(folder, folder)
+folderfilter = lambda folder: folder not in ['INBOX.Trash', 'INBOX.Junk Mail']
+maxconnections = 1
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
