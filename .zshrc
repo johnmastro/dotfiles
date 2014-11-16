@@ -9,7 +9,6 @@ export EDITOR='vim'
 export PAGER='less'
 export LESS='-iMRSx4 -FX'
 export PSQL_EDITOR='vim +"set syntax=sql" '
-export PYTHONSTARTUP="$HOME/.python/startup.py"
 
 export GPG_TTY=$(tty)
 
@@ -37,6 +36,10 @@ fi
 
 if [[ -d ~/bin ]]; then
     path=($HOME/bin $path)
+fi
+
+if [[ -f ~/.python/startup.py ]]; then
+   export PYTHONSTARTUP="$HOME/.python/startup.py"
 fi
 
 if [[ -d ~/.rbenv/bin ]]; then
