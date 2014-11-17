@@ -35,4 +35,4 @@ nametrans = lambda folder: {'INBOX'           : 'inbox',
                             }.get(folder, folder)
 folderfilter = lambda folder: folder not in ['INBOX.Trash', 'INBOX.Junk Mail']
 maxconnections = 1
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+sslcacertfile = ~/.offlineimap.certs
