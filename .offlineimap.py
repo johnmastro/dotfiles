@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import re
+import sys
 import subprocess as proc
 
 
@@ -34,3 +35,18 @@ def get_keychain_password(account, server):
     result = proc.check_output(command, shell=True, stderr=proc.STDOUT)
     line = [l for l in result.splitlines() if l.startswith('password: ')][0]
     return re.match(r'password: "(.*)"', line).group(1)
+
+
+def get_password(user, host, port=None):
+    """Return the password for `user`, `host`, and `port`.
+
+    The password is retrieved in a platform-specific way (the Keychain is used
+    on OS X, and the file ~/.authinfo.gpg is used on all other systems).
+
+    The argument `port` is ignored on OS X but is mandatory on all other
+    systems.
+    """
+    if sys.platform == 'darwin':
+        return get_keychain_password(user, host)
+    else:
+        return get_authinfo_password(user, host, port)

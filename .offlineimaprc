@@ -25,7 +25,7 @@ folderfilter = lambda folder: folder != 'trash'
 type = IMAP
 remotehost = mail.messagingengine.com
 remoteuser = jbm@fastmail.fm
-remotepasseval = get_authinfo_password("jbm@fastmail.fm", "mail.messagingengine.com", 465)
+remotepasseval = get_password("jbm@fastmail.fm", "mail.messagingengine.com", 465)
 ssl = yes
 expunge = no
 nametrans = lambda folder: {'INBOX'           : 'inbox',
