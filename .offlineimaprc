@@ -19,6 +19,7 @@ nametrans = lambda folder: {'inbox'  : 'INBOX',
                             'drafts' : 'INBOX.Drafts',
                             'sent'   : 'INBOX.Sent Items'
                             }.get(folder, folder)
+folderfilter = lambda folder: folder != 'trash'
 
 [Repository FastMail-Remote]
 type = IMAP
