@@ -5,10 +5,10 @@
 # Enviornment variables --------------------------------------------------- {{{
 
 PS1='%n@%m:%~/> '
-export EDITOR='vim'
+export EDITOR='emacsclient -a "emacs" -c '
 export PAGER='less'
 export LESS='-iMRSx4 -FX'
-export PSQL_EDITOR='vim +"set syntax=sql" '
+export PSQL_EDITOR='emacsclient -a "emacs" -c '
 
 export GPG_TTY=$(tty)
 
@@ -130,11 +130,11 @@ alias -g E='| grep -E'
 alias -g V='| col -b | vim -R -'
 
 # suffix (extension) aliases
-alias -s txt='vim'
-alias -s ini='vim'
-alias -s conf='vim'
-alias -s rst='vim'
-alias -s md='vim'
+alias -s txt=$EDITOR
+alias -s ini=$EDITOR
+alias -s conf=$EDITOR
+alias -s rst=$EDITOR
+alias -s md=$EDITOR
 
 # }}}
 # Completion -------------------------------------------------------------- {{{
