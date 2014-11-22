@@ -5,10 +5,10 @@
 # Enviornment variables --------------------------------------------------- {{{
 
 PS1='%n@%m:%~/> '
-export EDITOR='emacsclient -a "emacs" -c '
+export EDITOR='emacsclient -a "emacs" -c'
 export PAGER='less'
 export LESS='-iMRSx4 -FX'
-export PSQL_EDITOR='emacsclient -a "emacs" -c '
+export PSQL_EDITOR=$EDITOR
 
 export GPG_TTY=$(tty)
 
