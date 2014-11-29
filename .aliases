@@ -6,7 +6,8 @@
 
 # General laziness -------------------------------------------------------- {{{
 
-alias e='vim'
+alias e="$EDITOR"
+alias E="SUDO_EDITOR=\"$EDITOR\" sudoedit"
 alias vi='vim'
 alias g='git'
 alias x='extract'

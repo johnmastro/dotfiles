@@ -126,7 +126,6 @@ alias pyclean='zargs **/*.py[co] -- rm'
 # global aliases
 alias -g L='| less'
 alias -g G='| grep'
-alias -g E='| grep -E'
 alias -g V='| col -b | vim -R -'
 
 # suffix (extension) aliases
