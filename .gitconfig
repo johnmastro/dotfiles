@@ -6,7 +6,7 @@
 	editor = vim
 
 [push]
-	default = tracking
+	default = upstream
 
 [color]
 	ui = true
