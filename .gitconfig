@@ -4,12 +4,16 @@
 
 [core]
 	editor = vim
+	attributesfile = ~/.gitattributes
 
 [push]
 	default = upstream
 
 [color]
 	ui = true
+
+[diff "lisp"]
+	xfuncname = "^(\\(.*)$"
 
 [alias]
 	br = branch -v
