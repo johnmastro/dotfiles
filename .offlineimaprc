@@ -14,11 +14,12 @@ status_backend = sqlite
 [Repository FastMail-Local]
 type = Maildir
 localfolders = ~/.maildir/fastmail
+# All folders must start with "INBOX." on the server
 nametrans = lambda folder: {'inbox'  : 'INBOX',
                             'archive': 'INBOX.Archive',
                             'drafts' : 'INBOX.Drafts',
                             'sent'   : 'INBOX.Sent Items'
-                            }.get(folder, folder)
+                            }.get(folder, 'INBOX.' + folder)
 folderfilter = lambda folder: folder != 'trash'
 
 [Repository FastMail-Remote]
@@ -31,7 +32,7 @@ nametrans = lambda folder: {'INBOX'           : 'inbox',
                             'INBOX.Archive'   : 'archive',
                             'INBOX.Drafts'    : 'drafts',
                             'INBOX.Sent Items': 'sent'
-                            }.get(folder, folder)
+                            }.get(folder, folder[6:] if folder.startswith('INBOX.') else folder)
 folderfilter = lambda folder: folder not in ['INBOX.Trash', 'INBOX.Junk Mail']
 maxconnections = 1
 sslcacertfile = ~/.offlineimap.certs
