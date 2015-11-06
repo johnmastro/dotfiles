@@ -4,7 +4,6 @@
 ui = ttyui
 accounts = FastMail
 pythonfile = ~/.offlineimap.py
-fsync = false
 
 [Account FastMail]
 localrepository = FastMail-Local
