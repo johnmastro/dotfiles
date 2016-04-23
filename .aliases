@@ -21,12 +21,10 @@ alias serve='python -m SimpleHTTPServer'
 
 if [[ "$OSTYPE" =~ "linux" ]]; then
     alias mvim='vim'
-    alias ctl='sudo service'
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
     alias egrep='grep -E --color=auto'
     alias fgrep='grep -F --color=auto'
-    alias apt='sudo aptitude'
 fi
 
 # }}}
