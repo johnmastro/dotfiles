@@ -85,6 +85,10 @@ WATCHFMT="%n from %M has %a tty%l at %T %W"
 
 bindkey -e
 
+# Use the Emacs/Bash definition of "word" characters (alphanumerics)
+autoload -U select-word-style
+select-word-style bash
+
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
