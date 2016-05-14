@@ -47,8 +47,6 @@ if [[ -d ~/.rbenv/bin ]]; then
     eval "$(rbenv init -)"
 fi
 
-autoload -U zargs
-
 if [[ -x /usr/bin/dircolors ]]; then
     if [[ -f ~/.dircolors ]]; then
         eval `dircolors -b ~/.dircolors`
@@ -76,6 +74,8 @@ setopt correct
 setopt notify
 setopt nobeep
 
+autoload -Uz zargs
+
 watch=all
 logcheck=60
 WATCHFMT="%n from %M has %a tty%l at %T %W"
@@ -86,10 +86,10 @@ WATCHFMT="%n from %M has %a tty%l at %T %W"
 bindkey -e
 
 # Use the Emacs/Bash definition of "word" characters (alphanumerics)
-autoload -U select-word-style
+autoload -Uz select-word-style
 select-word-style bash
 
-autoload edit-command-line
+autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 
