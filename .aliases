@@ -20,6 +20,7 @@ alias serve='python -m SimpleHTTPServer'
 # Linux-specific aliases -------------------------------------------------- {{{
 
 if [[ "$OSTYPE" =~ "linux" ]]; then
+    alias psc='ps xawf -eo pid,user,cgroup,args'
     alias mvim='vim'
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
