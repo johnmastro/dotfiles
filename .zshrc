@@ -5,55 +5,17 @@
 # Enviornment variables --------------------------------------------------- {{{
 
 PS1='%n@%m:%~/> '
-export EDITOR='emacsclient -a "emacs" -c'
-export PAGER='less'
-export LESS='-iMRSx4 -FX'
-export PSQL_EDITOR=$EDITOR
 
-export GPG_TTY=$(tty)
+if [[ -f ~/.envrc ]]; then
+    source ~/.envrc
+fi
 
-if command -v gpg-agent &>/dev/null; then
-    envfile="$HOME/.gnupg/gpg-agent.env"
-    if [[ -e "$envfile" ]]; then
-        agentpid=$(grep GPG_AGENT_INFO "$envfile" | cut -d: -f 2)
-        if kill -0 "$agentpid" 2>/dev/null; then
-            eval "$(cat "$envfile")"
-        fi
-    else
-        eval "$(gpg-agent --daemon --write-env-file "$envfile")"
-    fi
-    export GPG_AGENT_INFO
+if [[ "$OSTYPE" == darwin* ]]; then
+    FPATH="/usr/local/share/zsh-completions:$FPATH"
+    FPATH="/usr/local/share/zsh/functions:$FPATH"
 fi
 
 typeset -U path cdpath fpath manpath
-
-if [[ "$OSTYPE" == darwin* ]]; then
-    path=(/usr/local/bin /usr/local/share/npm/bin $path)
-    fpath=(/usr/local/share/zsh-completions $fpath)
-    fpath=(/usr/local/share/zsh/functions $fpath)
-    export CLICOLOR=1
-fi
-
-if [[ -d ~/bin ]]; then
-    path=($HOME/bin $path)
-fi
-
-if [[ -f ~/.python/startup.py ]]; then
-   export PYTHONSTARTUP="$HOME/.python/startup.py"
-fi
-
-if [[ -d ~/.rbenv/bin ]]; then
-    path=($HOME/.rbenv/bin $path)
-    eval "$(rbenv init -)"
-fi
-
-if [[ -x /usr/bin/dircolors ]]; then
-    if [[ -f ~/.dircolors ]]; then
-        eval `dircolors -b ~/.dircolors`
-    else
-        eval `dircolors -b`
-    fi
-fi
 
 # }}}
 # Options ----------------------------------------------------------------- {{{

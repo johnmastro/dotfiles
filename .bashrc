@@ -8,34 +8,12 @@
 # if not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# enviornment variables
-export EDITOR='vim'
-export PAGER='less'
-export PSQL_EDITOR='vim +"set syntax=sql" '
-export PYTHONSTARTUP="$HOME/.python/startup.py"
-
-export GPG_TTY=$(tty)
-
-if command -v gpg-agent &>/dev/null; then
-    envfile="$HOME/.gnupg/gpg-agent.env"
-    if [[ -e "$envfile" ]]; then
-        agentpid=$(grep GPG_AGENT_INFO "$envfile" | cut -d: -f 2)
-        if kill -0 "$agentpid" 2>/dev/null; then
-            eval "$(cat "$envfile")"
-        fi
-    else
-        eval "$(gpg-agent --daemon --write-env-file "$envfile")"
-    fi
-    export GPG_AGENT_INFO
+if [[ -f ~/.envrc ]]; then
+    source ~/.envrc
 fi
 
 # options specific to os x
-if [[ "$OSTYPE" =~ "darwin" ]]; then
-    [ -d /usr/local/bin ] && PATH="/usr/local/bin:$PATH"
-    [ -d /usr/local/share/python ] && PATH="/usr/local/share/python:$PATH"
-
-    export CLICOLOR=1
-
+if [[ "$OSTYPE" == darwin* ]]; then
     type -P brew &>/dev/null
     if [[ "$?" == "0" ]]; then
         brew_prefix="$(brew --prefix)"
@@ -43,11 +21,6 @@ if [[ "$OSTYPE" =~ "darwin" ]]; then
             source $brew_prefix/etc/bash_completion
         fi
     fi
-fi
-
-# if it exists, add ~/bin to $PATH
-if [ -d "$HOME/bin" ]; then
-    PATH="$HOME/bin:$PATH"
 fi
 
 # history options
