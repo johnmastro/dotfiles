@@ -26,10 +26,11 @@ mklink () {
 link_dotfiles () {
     echo "Creating links to dotfiles"
     echo "--------------------------"
-    local dotfiles=($repo/!(.|..|install.sh|bin|.git|.gitignore))
+    local files=($repo/!(.|..|install.sh|bin|.git|.gitignore|.gitattributes*))
 
-    local path; local name
-    for path in "${dotfiles[@]}"; do
+    local name
+    local path
+    for path in "${files[@]}"; do
         name="$(basename "$path")"
         echo "Install '"$name"'?"
         echo -n "> "
@@ -45,7 +46,8 @@ link_bin () {
     echo "-----------------------------"
     local scripts=($repo/bin/*)
 
-    local path; local name
+    local name
+    local path
     for path in "${scripts[@]}"; do
         name="$(basename "$path")"
         echo "Install '"$name"'?"
@@ -61,7 +63,8 @@ make_dirs () {
     echo "Creating directories"
     echo "--------------------"
 
-    local path; local name
+    local name
+    local path
     for name in code src bin .maildir/fastmail; do
         path="$HOME/$name"
         echo "Create '"$path"'?"
