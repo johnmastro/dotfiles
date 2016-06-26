@@ -10,11 +10,6 @@ if [[ -f ~/.envrc ]]; then
     source ~/.envrc
 fi
 
-if [[ "$OSTYPE" == darwin* ]]; then
-    FPATH="/usr/local/share/zsh-completions:$FPATH"
-    FPATH="/usr/local/share/zsh/functions:$FPATH"
-fi
-
 typeset -U path cdpath fpath manpath
 
 # }}}

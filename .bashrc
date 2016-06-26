@@ -14,12 +14,8 @@ fi
 
 # options specific to os x
 if [[ "$OSTYPE" == darwin* ]]; then
-    type -P brew &>/dev/null
-    if [[ "$?" == "0" ]]; then
-        brew_prefix="$(brew --prefix)"
-        if [ -f $brew_prefix/etc/bash_completion ]; then
-            source $brew_prefix/etc/bash_completion
-        fi
+    if [[ -f /usr/local/etc/bash_completion.d/git-completion.bash ]]; then
+        source /usr/local/etc/bash_completion.d/git-completion.bash
     fi
 fi
 
