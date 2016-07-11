@@ -2,18 +2,9 @@
 # ~/.zshrc: executed by zsh for interactive shells.
 ###############################################################################
 
-# Enviornment variables --------------------------------------------------- {{{
+# Options ----------------------------------------------------------------- {{{
 
 PS1='%n@%m:%~/> '
-
-if [[ -f ~/.envrc ]]; then
-    source ~/.envrc
-fi
-
-typeset -U path cdpath fpath manpath
-
-# }}}
-# Options ----------------------------------------------------------------- {{{
 
 setopt noclobber
 setopt shortloops
