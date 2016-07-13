@@ -1,5 +1,0 @@
-# -*- mode: gitattributes -*-
-
-*.lisp diff=lisp
-*.el diff=lisp
-*.scm diff=lisp

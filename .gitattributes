@@ -1,3 +1,5 @@
-* text=auto
+# -*- mode: gitattributes -*-
 
-.aspell.en.pws text eol=lf
+*.lisp diff=lisp
+*.el diff=lisp
+*.scm diff=lisp

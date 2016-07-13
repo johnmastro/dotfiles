@@ -26,7 +26,7 @@ mklink () {
 link_dotfiles () {
     echo "Creating links to dotfiles"
     echo "--------------------------"
-    local files=($repo/!(.|..|install.sh|bin|.git|.gitignore|.gitattributes*))
+    local files=($repo/!(.|..|install.sh|bin|.git|.gitignore|.gitattributes))
 
     local name
     local path
