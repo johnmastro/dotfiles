@@ -92,6 +92,10 @@ alias -s md=$EDITOR
 
 autoload -Uz compinit
 compinit
+
+autoload -Uz bashcompinit
+bashcompinit
+
 zmodload -i zsh/complist
 
 unsetopt menu_complete
@@ -99,6 +103,10 @@ unsetopt flow_control
 setopt auto_menu
 setopt complete_in_word
 setopt always_to_end
+
+if command -v stack &>/dev/null; then
+    eval "$(stack --bash-completion-script stack)"
+fi
 
 WORDCHARS=''
 
