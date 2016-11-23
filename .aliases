@@ -4,7 +4,7 @@
 # Sourced by `zsh` and `bash` (via ~/.zshrc and ~/.bashrc respectively).
 ###############################################################################
 
-# General laziness -------------------------------------------------------- {{{
+# General laziness ------------------------------------------------------------
 
 alias e="$EDITOR"
 alias E="SUDO_EDITOR=\"$EDITOR\" sudoedit"
@@ -16,8 +16,7 @@ alias ipy='ipython'
 alias tmx='TERM=xterm-256color tmux'
 alias serve='python -m SimpleHTTPServer'
 
-# }}}
-# Linux-specific aliases -------------------------------------------------- {{{
+# Linux-specific aliases ------------------------------------------------------
 
 if [[ "$OSTYPE" =~ "linux" ]]; then
     alias psc='ps xawf -eo pid,user,cgroup,args'
@@ -28,8 +27,7 @@ if [[ "$OSTYPE" =~ "linux" ]]; then
     alias fgrep='grep -F --color=auto'
 fi
 
-# }}}
-# `ls` -------------------------------------------------------------------- {{{
+# `ls` ------------------------------------------------------------------------
 
 alias l='ls'
 alias la='ls -AF'
@@ -38,8 +36,7 @@ alias lt='ls -lhtF'
 alias ltr='ls -lhtrF'
 alias lsd='ls -l | grep "^d"'
 
-# }}}
-# File & directory operations --------------------------------------------- {{{
+# File & directory operations -------------------------------------------------
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -58,25 +55,21 @@ alias 7='cd +7'
 alias 8='cd +8'
 alias 9='cd +9'
 
-# }}}
-# Archives ---------------------------------------------------------------- {{{
+# Archives --------------------------------------------------------------------
 
 alias tgc='tar -cxvf'
 alias tgx='tar -zxvf'
 alias tbc='tar --bzip2 -cvf'
 alias tbx='tar --bzip2 -xvf'
 
-# }}}
-# History ----------------------------------------------------------------- {{{
+# History ---------------------------------------------------------------------
 
 alias history='fc -l 1'
 alias h='history'
 
-# }}}
-# Syntax-highlighting `cat` ----------------------------------------------- {{{
+# Syntax-highlighting `cat` ---------------------------------------------------
 
 alias c='pygmentize -O style=solarized256 -f console256 -g'
 
-# }}}
 
-# vim: ft=sh:foldmethod=marker:foldlevel=0
+# vim: ft=sh

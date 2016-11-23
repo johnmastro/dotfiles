@@ -2,7 +2,7 @@
 # ~/.zshrc: executed by zsh for interactive shells.
 ###############################################################################
 
-# Options ----------------------------------------------------------------- {{{
+# Options ---------------------------------------------------------------------
 
 PS1='%n@%m:%~/> '
 
@@ -28,8 +28,7 @@ watch=all
 logcheck=60
 WATCHFMT="%n from %M has %a tty%l at %T %W"
 
-# }}}
-# Key (re-)binding -------------------------------------------------------- {{{
+# Key (re-)binding ------------------------------------------------------------
 
 bindkey -e
 
@@ -46,8 +45,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
     bindkey "^[[F" end-of-line
 fi
 
-# }}}
-# History ----------------------------------------------------------------- {{{
+# History ---------------------------------------------------------------------
 
 HISTFILE=$HOME/.histfile
 HISTSIZE=1000
@@ -66,8 +64,7 @@ setopt hist_no_store
 setopt hist_verify
 setopt hist_allow_clobber
 
-# }}}
-# Aliases ----------------------------------------------------------------- {{{
+# Aliases ---------------------------------------------------------------------
 
 [[ -f ~/.aliases ]] && source ~/.aliases
 [[ -f ~/.private/.aliases ]] && source ~/.private/.aliases
@@ -87,8 +84,7 @@ alias -s conf=$EDITOR
 alias -s rst=$EDITOR
 alias -s md=$EDITOR
 
-# }}}
-# Completion -------------------------------------------------------------- {{{
+# Completion ------------------------------------------------------------------
 
 autoload -Uz compinit
 compinit
@@ -126,7 +122,3 @@ zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm 
 # disable named-directories autocompletion
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 cdpath=(.)
-
-# }}}
-
-# vim: foldmethod=marker:foldlevel=0
