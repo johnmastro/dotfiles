@@ -1,25 +1,25 @@
 ###############################################################################
 # ~/.bashrc
 #
-# executed by bash for interactive shells. based on the default version
+# Executed by bash for interactive shells. based on the default version
 # shipped with ubuntu.
 ###############################################################################
 
-# if not running interactively, don't do anything
+# If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
 if [[ -f ~/.envrc ]]; then
     source ~/.envrc
 fi
 
-# options specific to os x
+# Options specific to MacOS
 if [[ "$OSTYPE" == darwin* ]]; then
     if [[ -f /usr/local/etc/bash_completion.d/git-completion.bash ]]; then
         source /usr/local/etc/bash_completion.d/git-completion.bash
     fi
 fi
 
-# history options
+# History options
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
@@ -32,15 +32,15 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
-# make less more friendly for non-text input files, see lesspipe(1)
+# Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
+# Set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
+# Set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
@@ -63,15 +63,15 @@ fi
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# aliases used in both bash in zsh
+# Aliases used in both bash in zsh
 [ -f ~/.aliases ] && source ~/.aliases
 [ -f ~/.private/.aliases ] && source ~/.private/.aliases
 
-# bash-specific aliases
+# Bash-specific aliases
 alias cd='pushd'
 alias ..='cd ..'
 
-# enable programmable completion features (you don't need to enable
+# Enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then

@@ -23,7 +23,7 @@ def get_authinfo_password(login, machine, port):
 
 
 def get_keychain_password(account, server):
-    """Return the password for `account` and `server` in OS X's keychain."""
+    """Return the password for `account` and `server` in MacOS's keychain."""
     params = {
         'security': '/usr/bin/security',
         'command': 'find-internet-password',
@@ -41,10 +41,9 @@ def get_password(user, host, port=None):
     """Return the password for `user`, `host`, and `port`.
 
     The password is retrieved in a platform-specific way (the Keychain is used
-    on OS X, and the file ~/.authinfo.gpg is used on all other systems).
+    on MacOS, and the file ~/.authinfo.gpg is used on all other systems).
 
-    The argument `port` is ignored on OS X but is mandatory on all other
-    systems.
+    The argument `port` is ignored on MacOS but is mandatory otherwise.
     """
     if sys.platform == 'darwin':
         return get_keychain_password(user, host)
