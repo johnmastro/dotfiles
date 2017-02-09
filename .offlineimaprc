@@ -12,7 +12,7 @@ status_backend = sqlite
 
 [Repository FastMail-Local]
 type = Maildir
-localfolders = ~/.maildir/fastmail
+localfolders = ~/.mail/fastmail
 # All folders must start with "INBOX." on the server
 nametrans = lambda folder: {'inbox'  : 'INBOX',
                             'archive': 'INBOX.Archive',
