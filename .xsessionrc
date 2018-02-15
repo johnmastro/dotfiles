@@ -1,0 +1,5 @@
+# -*- mode: sh -*-
+
+if [ -f "$HOME/.profile" ];
+   . "$HOME/.profile"
+fi
