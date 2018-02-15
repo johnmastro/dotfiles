@@ -1,4 +1,6 @@
-# Configuration for `offlineimap` (see also `~/.offlineimap.py`)   -*- conf -*-
+# -*- mode: conf -*-
+
+# Configuration for `offlineimap` (see also `~/.offlineimap.py`)
 
 [general]
 ui = ttyui
