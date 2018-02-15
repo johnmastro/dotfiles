@@ -28,6 +28,14 @@ watch=all
 logcheck=60
 WATCHFMT="%n from %M has %a tty%l at %T %W"
 
+if [[ -x /usr/bin/dircolors ]]; then
+    if [[ -f ~/.dircolors ]]; then
+        eval `dircolors -b ~/.dircolors`
+    else
+        eval `dircolors -b`
+    fi
+fi
+
 # Key (re-)binding ------------------------------------------------------------
 
 bindkey -e
