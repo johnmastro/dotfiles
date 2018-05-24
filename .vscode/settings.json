@@ -1,0 +1,27 @@
+{
+    "editor.parameterHints": false,
+    "editor.renderWhitespace": "boundary",
+    "editor.minimap.enabled": false,
+    "editor.fontFamily": "'Source Code Pro', Menlo, Monaco, 'Courier New', monospace",
+    "editor.cursorStyle": "block",
+    "editor.cursorBlinking": "solid",
+    "editor.renderControlCharacters": true,
+    "files.hotExit": "off",
+    "files.insertFinalNewline": true,
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.historyExplorer.enabled": true,
+    "gitlens.keymap": "alternate",
+    "gitlens.mode.active": "zen",
+    "search.smartCase": true,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "terminal.external.osxExec": "iTerm.app",
+    "window.restoreWindows": "folders",
+    "window.title": "${activeEditorMedium}${separator}${rootName}",
+    "workbench.statusBar.feedback.visible": false,
+    "[javascript]": {
+        "editor.tabSize": 2
+    }
+}
