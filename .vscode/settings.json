@@ -14,6 +14,8 @@
     "gitlens.historyExplorer.enabled": true,
     "gitlens.keymap": "alternate",
     "gitlens.mode.active": "zen",
+    "npm.enableScriptExplorer": true,
+    "prettier.eslintIntegration": true,
     "search.smartCase": true,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
@@ -21,7 +23,10 @@
     "window.restoreWindows": "folders",
     "window.title": "${activeEditorMedium}${separator}${rootName}",
     "workbench.statusBar.feedback.visible": false,
-    "[javascript]": {
-        "editor.tabSize": 2
-    }
+    "[sql]": {
+        "editor.tabSize": 4
+    },
+    "editor.tabSize": 2,
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Plastic"
 }
