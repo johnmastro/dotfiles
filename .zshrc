@@ -4,8 +4,6 @@
 
 # Options ---------------------------------------------------------------------
 
-PS1='%n@%m:%~/> '
-
 setopt noclobber
 setopt shortloops
 setopt extendedglob
@@ -21,8 +19,19 @@ setopt pushdtohome
 setopt correct
 setopt notify
 setopt nobeep
+setopt prompt_subst
 
 autoload -Uz zargs
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' formats '%F{green}%s:%b%f'
+zstyle ':vcs_info:*' actionformats '%F{green}%s:%F{yellow}[%b|%a]%f'
+precmd() { vcs_info }
+
+PROMPT=$'
+%F{blue}%n@%m:%~/%f ${vcs_info_msg_0_}
+%B➜%b '
 
 watch=all
 logcheck=60
