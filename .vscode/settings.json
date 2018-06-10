@@ -7,7 +7,6 @@
     "editor.cursorBlinking": "solid",
     "editor.renderControlCharacters": true,
     "files.hotExit": "off",
-    "files.insertFinalNewline": true,
     "gitlens.advanced.messages": {
         "suppressShowKeyBindingsNotice": true
     },
@@ -23,10 +22,6 @@
     "window.restoreWindows": "folders",
     "window.title": "${activeEditorMedium}${separator}${rootName}",
     "workbench.statusBar.feedback.visible": false,
-    "[sql]": {
-        "editor.tabSize": 4
-    },
-    "editor.tabSize": 2,
     "window.zoomLevel": 0,
     "workbench.colorTheme": "Plastic"
 }
