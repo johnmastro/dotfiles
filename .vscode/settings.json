@@ -6,6 +6,21 @@
     "editor.cursorStyle": "block",
     "editor.cursorBlinking": "solid",
     "editor.renderControlCharacters": true,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "comment",
+                    "comment.block",
+                    "comment.block.documentation",
+                    "comment.line"
+                ],
+                "settings": {
+                    "fontStyle": ""
+                }
+            }
+        ]
+    },
     "files.hotExit": "off",
     "gitlens.advanced.messages": {
         "suppressShowKeyBindingsNotice": true
