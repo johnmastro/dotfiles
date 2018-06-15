@@ -38,5 +38,12 @@
     "window.title": "${activeEditorMedium}${separator}${rootName}",
     "workbench.statusBar.feedback.visible": false,
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "Plastic"
+    "workbench.colorTheme": "Plastic",
+    "extensions.ignoreRecommendations": false,
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+    "[json]": {
+        "editor.tabSize": 2
+    }
 }

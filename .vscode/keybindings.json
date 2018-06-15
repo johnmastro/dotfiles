@@ -3,7 +3,9 @@
   { "key": "ctrl+a",    "command": "cursorHome",
                            "when": "textInputFocus" },
   { "key": "alt+cmd+=", "command": "editor.action.smartSelect.grow",
-                           "when": "editorTextFocus"},
+                           "when": "editorTextFocus" },
   { "key": "alt+cmd+-", "command": "editor.action.smartSelect.shrink",
-                           "when": "editorTextFocus"}
+                           "when": "editorTextFocus" },
+  { "key": "alt+cmd+e", "command": "editor.emmet.action.wrapWithAbbreviation",
+                           "when": "editorTextFocus" }
 ]
