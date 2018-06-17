@@ -65,8 +65,8 @@ fi
 # History ---------------------------------------------------------------------
 
 HISTFILE=$HOME/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=5000
+SAVEHIST=5000
 
 setopt append_history
 setopt inc_append_history
