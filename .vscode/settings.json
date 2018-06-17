@@ -30,6 +30,7 @@
     "gitlens.mode.active": "zen",
     "npm.enableScriptExplorer": true,
     "prettier.eslintIntegration": true,
+    "prettier.singleQuote": true,
     "search.smartCase": true,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
