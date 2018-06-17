@@ -25,13 +25,35 @@ autoload -Uz zargs
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:*' formats '%F{green}%s:%b%f'
-zstyle ':vcs_info:*' actionformats '%F{green}%s:%F{yellow}[%b|%a]%f'
-precmd() { vcs_info }
+zstyle ':vcs_info:*' formats ' %F{green}%s:%b%f'
+zstyle ':vcs_info:*' actionformats ' %F{green}%s:%F{yellow}[%b|%a]%f'
+
+# TODO: autoload these?
+source ~/.zsh/functions/_last_command_status.zsh
+source ~/.zsh/functions/_abbreviated_pwd.zsh
+
+precmd() {
+    _last_command_status
+    _abbreviated_pwd
+    vcs_info
+}
 
 PROMPT=$'
-%F{blue}%n@%m:%~/%f ${vcs_info_msg_0_}
+%F{blue}%n@%m:${_ABBREVIATED_PWD}/%f${vcs_info_msg_0_}${_LAST_COMMAND_STATUS}
 %B➜%b '
+
+# Emacs's dirtrack-mode uses the shell prompt to keep track of the pwd, which is
+# defeated by my abbreviated pwd format. Therefore, when running the shell
+# inside Emacs, prepend some marker characters plus the full pwd to the prompt
+# for use by dirtrack-mode. The markers and full pwd are later removed via
+# comint-preoutput-filter-functions
+INSIDE_EMACS_PROMPT=$'|_P_W_D_:|%~|
+%F{blue}%n@%m:${_ABBREVIATED_PWD}/%f${vcs_info_msg_0_}${_LAST_COMMAND_STATUS}
+%B➜%b '
+
+if [[ "x$INSIDE_EMACS" != "x" ]]; then
+   PROMPT="${INSIDE_EMACS_PROMPT}"
+fi
 
 watch=all
 logcheck=60
