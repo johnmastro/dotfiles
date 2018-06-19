@@ -2,3 +2,4 @@
 *.py[co]
 history.sqlite
 .idlerc/recent-files.lst
+.tern-port
