@@ -1,7 +1,10 @@
 \set QUIET
 \pset null 'NULL'
 \timing
+\x auto
+\set VERBOSITY verbose
 \set HISTSIZE 2000
 \set HISTCONTROL ignoredups
+\set COMP_KEYWORD_CASE lower
 \pset pager always
 \unset QUIET
