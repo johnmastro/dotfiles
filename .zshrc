@@ -20,6 +20,7 @@ setopt correct
 setopt notify
 setopt nobeep
 setopt prompt_subst
+setopt interactive_comments
 
 autoload -Uz zargs
 

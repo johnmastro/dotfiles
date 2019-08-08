@@ -7,4 +7,3 @@ if [[ -f ~/.envrc ]]; then
 fi
 
 typeset -U path cdpath fpath manpath
-
