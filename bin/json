@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if [ -p /dev/stdin ]; then
-    python -m json.tool | pygmentize -l javascript
-else
-    python -m json.tool <<< "$*" | pygmentize -l javascript
-fi

@@ -41,24 +41,6 @@ link_dotfiles () {
     done
 }
 
-link_bin () {
-    echo "Creating links to executables"
-    echo "-----------------------------"
-    local scripts=($repo/bin/*)
-
-    local name
-    local path
-    for path in "${scripts[@]}"; do
-        name="$(basename "$path")"
-        echo "Install '"$name"'?"
-        echo -n "> "
-        read answer
-        if [[ $answer =~ [yY] ]]; then
-            mklink "$path" "$HOME/bin/$name"
-        fi
-    done
-}
-
 make_dirs () {
     echo "Creating directories"
     echo "--------------------"
@@ -79,7 +61,6 @@ make_dirs () {
 run_all () {
     make_dirs
     link_dotfiles
-    link_bin
 }
 
 run () {
