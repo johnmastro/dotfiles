@@ -49,5 +49,8 @@
         "enabled": false,
         "args": []
     },
-    "gitlens.currentLine.enabled": false
+    "gitlens.currentLine.enabled": false,
+    "gitlens.advanced.telemetry.enabled": false,
+    "gitlens.codeLens.enabled": false,
+    "workbench.iconTheme": "material-icon-theme"
 }

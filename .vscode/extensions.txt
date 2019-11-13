@@ -1,0 +1,8 @@
+eamodio.gitlens
+mauve.terraform
+ms-azuretools.vscode-docker
+ms-python.python
+PKief.material-icon-theme
+redhat.vscode-yaml
+shanoor.vscode-nginx
+will-stone.plastic
