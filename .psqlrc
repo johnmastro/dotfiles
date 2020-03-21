@@ -1,5 +1,5 @@
 \set QUIET
-\pset null 'NULL'
+\pset null '∅'
 \timing
 \x auto
 \set VERBOSITY verbose
