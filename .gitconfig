@@ -37,6 +37,8 @@
 
 	st = status -sb
 
+	recent = !"A=$(git branch --sort=-committerdate | sed 's/[ *]//g' | fzf --reverse --height=50% --preview 'git show --color {}') && git checkout $A"
+
 [url "git@github.com:"]
 	insteadOf = "gh:"
 
