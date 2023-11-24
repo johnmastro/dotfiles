@@ -5,7 +5,7 @@
 #   - ln -s ~/code/dotfiles/config.sh ~/.config/fish/config.fish
 #   - install fisher: https://github.com/jorgebucaran/fisher
 #   - fisher install jorgebucaran/nvm.fish
-#   - fisher install IlanCosman/tide@v5
+#   - fisher install IlanCosman/tide@v6
 #   - tide configure
 
 if status is-interactive
