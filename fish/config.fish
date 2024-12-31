@@ -2,7 +2,7 @@
 #   - brew install fish
 #   - add it to /etc/shells
 #   - sudo chsh
-#   - ln -s ~/code/dotfiles/config.fish ~/.config/fish/config.fish
+#   - ln -s ~/code/dotfiles/fish/config.fish ~/.config/fish/config.fish
 #   - install fisher: https://github.com/jorgebucaran/fisher
 #   - fisher install jorgebucaran/nvm.fish
 #   - fisher install IlanCosman/tide@v6
