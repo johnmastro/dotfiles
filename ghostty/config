@@ -1,0 +1,3 @@
+# Installation: ln -s ~/code/dotfiles/ghostty/config ~/.config/ghostty/config
+
+font-feature = -calt
