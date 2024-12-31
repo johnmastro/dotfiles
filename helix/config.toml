@@ -1,0 +1,8 @@
+# Installation: ln -s ~/code/dotfiles/helix/config.toml ~/.config/helix/config.toml
+
+theme = "solarized_dark"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
