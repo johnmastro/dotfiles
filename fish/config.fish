@@ -11,9 +11,9 @@
 if status is-interactive
     fish_add_path /opt/homebrew/bin
 
-    set -gx EDITOR hx
+    set -gx EDITOR nvim
 
-    abbr --add e hx
+    abbr --add e nvim
     abbr --add g git
     abbr --add k kubectl
 
